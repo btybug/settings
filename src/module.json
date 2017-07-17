@@ -1,0 +1,12 @@
+{
+    "name": "Settings",
+    "slug": "settings",
+    "type":"core",
+    "author":"Abokamal",
+    "title":"Settings",
+    "author_site":"http://dev.bootydev.co.uk/",
+    "version": "1.0",
+    "description": "This is the description for the Settings module.",
+    "created_at": "05-11-2013 12:00",
+    "tables":["settings","sdn_settings","emails","email_groups"]
+}
