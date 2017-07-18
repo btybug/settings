@@ -112,7 +112,7 @@ Route::group(
             Route::post('/frontend/general', 'SystemController@postMain');
             // page layouts
             Route::get('/frontend/layout', 'LayoutController@getIndex');
-            Route::get('/frontend/create-layout/{key?}', \App\Models\Themes\Themes::active()->namespace_to_create);
+//            Route::get('/frontend/create-layout/{key?}', \App\Models\Themes\Themes::active()->namespace_to_create);
             Route::get('/frontend/layout-delete/{key}', 'LayoutController@getDeleteLayout');
 
             Route::get('/frontend', 'FrontPagesLayoutController@getPageLayout');
