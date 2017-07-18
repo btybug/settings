@@ -1,5 +1,5 @@
 <?php
-use App\Modules\Settings\Uploaders;
+use Sahakavatar\Settings\Uploaders;
 
 if (!function_exists('BBUploader')) {
 

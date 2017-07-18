@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Models\Settings;
+namespace Sahakavatar\Models\Settings;
 
 use App\Models\Moduledb;
 use Illuminate\Database\Eloquent\Model;

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Modules\Settings\Models;
+namespace Sahakavatar\Settings\Models;
 
-use App\Modules\Create\Fields;
+use Sahakavatar\Create\Fields;
 use App\Models\Moduledb;
 use File;
 
 /**
  * Class Common
  *
- * @package App\Modules\Settings\Models
+ * @package Sahakavatar\Settings\Models
  */
 class Common
 {

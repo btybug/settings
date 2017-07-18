@@ -10,7 +10,7 @@ if (!function_exists('groups')) {
      */
     function mailgroups($params = [])
     {
-        $groups = new App\Modules\Settings\Models\EmailGroups;
+        $groups = new Sahakavatar\Settings\Models\EmailGroups;
 
         return $groups->findGroups();
     }
@@ -25,7 +25,7 @@ if (!function_exists('mailgroup')) {
      */
     function mailgroup($id)
     {
-        $groups = new App\Modules\Settings\Models\EmailGroups;
+        $groups = new Sahakavatar\Settings\Models\EmailGroups;
         return $groups->findGroup($id);
     }
 }

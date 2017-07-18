@@ -16,7 +16,7 @@
  * Time: 10:51 PM
  */
 
-namespace App\Modules\Settings\Models;
+namespace Sahakavatar\Settings\Models;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -29,7 +29,7 @@ class SidebarTypes extends Model
     protected $dates = ['created_at', 'updated_at'];
 
     public function sidebars(){
-       return $this->hasMany('App\Modules\Settings\Models\Sidebar','sidebar_type_id');
+       return $this->hasMany('Sahakavatar\Settings\Models\Sidebar','sidebar_type_id');
     }
 
     public function scopeExtra($model){

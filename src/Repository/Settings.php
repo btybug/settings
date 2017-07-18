@@ -6,7 +6,7 @@
  * Time: 11:51 AM
  */
 
-namespace App\Modules\Settings\Repository;
+namespace Sahakavatar\Settings\Repository;
 use App\Models\Setting;
 use App\helpers\helpers;
 

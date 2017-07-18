@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\Settings\Models;
+namespace Sahakavatar\Settings\Models;
 
-use App\Modules\Assets\Models\ClassesVariations;
+use Sahakavatar\Assets\Models\ClassesVariations;
 use Illuminate\Database\Eloquent\Model;
 use File;
 use App\Models\Menu;
@@ -108,6 +108,6 @@ class Sidebar extends Model
         }
     }
     public function type(){
-        return $this->belongsTo('App\Modules\Settings\Models\SidebarTypes','sidebar_type_id');
+        return $this->belongsTo('Sahakavatar\Settings\Models\SidebarTypes','sidebar_type_id');
     }
 }

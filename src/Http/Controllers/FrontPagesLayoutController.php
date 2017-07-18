@@ -16,18 +16,18 @@
  * Time: 9:35 PM
  */
 
-namespace App\Modules\Settings\Http\Controllers;
+namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Settings\Models\Sidebar;
-use App\Modules\Settings\Models\SidebarTypes;
+use Sahakavatar\Settings\Models\Sidebar;
+use Sahakavatar\Settings\Models\SidebarTypes;
 use Datatables;
 use Illuminate\Http\Request;
 
 
 /**
  * Class FrontPagesLayoutController
- * @package App\Modules\Settings\Http\Controllers
+ * @package Sahakavatar\Settings\Http\Controllers
  */
 class FrontPagesLayoutController extends Controller
 {

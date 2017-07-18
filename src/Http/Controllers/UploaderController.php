@@ -1,13 +1,13 @@
 <?php
-namespace App\Modules\Settings\Http\Controllers;
+namespace Sahakavatar\Settings\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
-use App\Modules\Media\Media;
+use Sahakavatar\Media\Media;
 use Illuminate\Http\Request;
-use App\Modules\Settings\Uploaders;
+use Sahakavatar\Settings\Uploaders;
 use App\Models\Term;
-use App\Modules\Create\Models\CHelper;
+use Sahakavatar\Create\Models\CHelper;
 use App\helpers\helpers;
 use App\helpers\dbhelper;
 use Datatables;

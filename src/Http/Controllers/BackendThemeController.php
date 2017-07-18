@@ -9,26 +9,26 @@
  *
  */
 
-namespace App\Modules\Settings\Http\Controllers;
+namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContentLayouts\ContentLayouts;
 use App\Models\Templates\UiElements;
-use App\Modules\Resources\Models\StyleItems;
-use App\Modules\Resources\Models\Styles;
-use App\Modules\Resources\Models\BackendTh;
-use App\Modules\Settings\Models\LayoutUpload;
-use App\Modules\Settings\Models\ThUpload;
-use App\Modules\Settings\Models\Validation as thValid;
-use App\Modules\Create\Models\Menu;
-use App\Modules\Users\Models\Roles;
+use Sahakavatar\Resources\Models\StyleItems;
+use Sahakavatar\Resources\Models\Styles;
+use Sahakavatar\Resources\Models\BackendTh;
+use Sahakavatar\Settings\Models\LayoutUpload;
+use Sahakavatar\Settings\Models\ThUpload;
+use Sahakavatar\Settings\Models\Validation as thValid;
+use Sahakavatar\Create\Models\Menu;
+use Sahakavatar\Users\Models\Roles;
 use File;
 use Illuminate\Http\Request;
 use view;
 
 /**
  * Class ModulesController
- * @package App\Modules\Modules\Http\Controllers
+ * @package Sahakavatar\Modules\Http\Controllers
  */
 class BackendThemeController extends Controller
 {
@@ -237,7 +237,7 @@ class BackendThemeController extends Controller
     {
         $id = $request->get('id');
 
-        $menus = \App\Modules\Backend\Models\Menus\BackendMenus::all();
+        $menus = \Sahakavatar\Backend\Models\Menus\BackendMenus::all();
 
         $html = View::make('settings::_partials.menus', compact(['menus']))->render();
         return $html;

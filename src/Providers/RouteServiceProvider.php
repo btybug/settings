@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Settings\Providers;
+namespace Sahakavatar\Settings\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'App\Modules\Settings\Http\Controllers';
+    protected $namespace = 'Sahakavatar\Settings\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -55,7 +55,7 @@ class RouteServiceProvider extends ServiceProvider
             'middleware' => 'web',
             'namespace'  => $this->namespace,
         ], function ($router) {
-            require module_path('settings', 'Routes/web.php');
+            require __DIR__.'/../Routes/web.php';
         });
     }
 
@@ -73,7 +73,7 @@ class RouteServiceProvider extends ServiceProvider
             'namespace'  => $this->namespace,
             'prefix'     => 'api',
         ], function ($router) {
-            require module_path('settings', 'Routes/api.php');
+            require __DIR__.'/../Routes/web.php';
         });
     }
 }

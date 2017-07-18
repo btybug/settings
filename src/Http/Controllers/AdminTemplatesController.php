@@ -6,15 +6,15 @@
  * Time: 9:35 PM
  */
 
-namespace App\Modules\Settings\Http\Controllers;
+namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContentLayouts\ContentLayouts as AdminTemplates;
 use App\Models\Templates\Units;
 use App\Models\Templates\Widgets;
-use App\Modules\Modules\Models\AdminPages;
-use App\Modules\Resources\Models\LayoutUpload;
-use App\Modules\Resources\Models\Validation as thValid;
+use Sahakavatar\Modules\Models\AdminPages;
+use Sahakavatar\Resources\Models\LayoutUpload;
+use Sahakavatar\Resources\Models\Validation as thValid;
 use File;
 use Illuminate\Http\Request;
 use view;

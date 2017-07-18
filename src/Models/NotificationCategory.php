@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Settings\Models;
+namespace Sahakavatar\Settings\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -30,7 +30,7 @@ class NotificationCategory extends Model
      */
     public function notifications()
     {
-        return $this->hasMany('App\Modules\Settings\Models\Notification', 'category_id');
+        return $this->hasMany('Sahakavatar\Settings\Models\Notification', 'category_id');
     }
 
 

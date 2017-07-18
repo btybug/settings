@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Settings\Models;
+namespace Sahakavatar\Settings\Models;
 
 use File,Validator;
 
 
 /**
  * Class Validation
- * @package App\Modules\Packeges\Models
+ * @package Sahakavatar\Packeges\Models
  */
 class Validation
 {

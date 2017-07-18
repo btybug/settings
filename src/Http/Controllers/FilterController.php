@@ -1,21 +1,21 @@
 <?php
-namespace App\Modules\Settings\Http\Controllers;
+namespace Sahakavatar\Settings\Http\Controllers;
 
 use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Moduledb;
-use App\Modules\Settings\Models\Filter;
+use Sahakavatar\Settings\Models\Filter;
 use App\helpers\helpers;
 use App\helpers\dbhelper;
-use App\Modules\Settings\Models\Common;
-use App\Modules\Create\Fields;
+use Sahakavatar\Settings\Models\Common;
+use Sahakavatar\Create\Fields;
 use Illuminate\Support\Collection;
 use Datatables, File;
-use App\Modules\Users\Models\Sessions;
+use Sahakavatar\Users\Models\Sessions;
 use Redirect;
 use Illuminate\Support\Facades\Session;
-use App\Modules\Users\User;
+use Sahakavatar\Users\User;
 
 
 

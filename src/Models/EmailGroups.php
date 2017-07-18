@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Settings\Models;
+namespace Sahakavatar\Settings\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\helpers\setres;
@@ -46,7 +46,7 @@ class EmailGroups extends Model
 
     public function emails()
     {
-        return $this->hasMany('App\Modules\Settings\Models\Emails', 'group_id', 'id');
+        return $this->hasMany('Sahakavatar\Settings\Models\Emails', 'group_id', 'id');
     }
 
 

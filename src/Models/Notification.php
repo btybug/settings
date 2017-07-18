@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Settings\Models;
+namespace Sahakavatar\Settings\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
@@ -55,7 +55,7 @@ class Notification extends Model
      */
     public function body()
     {
-        return $this->belongsTo('App\Modules\Settings\Models\NotificationCategory', 'category_id');
+        return $this->belongsTo('Sahakavatar\Settings\Models\NotificationCategory', 'category_id');
     }
 
     /**

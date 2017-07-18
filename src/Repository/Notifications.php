@@ -6,10 +6,10 @@
  * Time: 11:51 AM
  */
 
-namespace App\Modules\Settings\Repository;
+namespace Sahakavatar\Settings\Repository;
 
-use App\Modules\Settings\Models\NotificationCategory;
-use App\Modules\Settings\Models\Notification;
+use Sahakavatar\Settings\Models\NotificationCategory;
+use Sahakavatar\Settings\Models\Notification;
 use App\Models\Setting;
 use App\helpers\helpers;
 use App\helpers\dbhelper;

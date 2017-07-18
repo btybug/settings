@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Settings\Http\Controllers\Api;
+namespace Sahakavatar\Settings\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Modules\Settings\Models\EmailGroups as EmailGroups;
+use Sahakavatar\Settings\Models\EmailGroups as EmailGroups;
 
 
 /**

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Modules\Settings\Http\Controllers;
+namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Modules\Settings\Fesetting;
+use Sahakavatar\Settings\Fesetting;
 use App\Repositories\TemplatesRepository as Templates;
-use App\Modules\Settings\AdminListingRepository as AdmnList;
+use Sahakavatar\Settings\AdminListingRepository as AdmnList;
 use App\helpers\dbhelper;
 use Session,
     URL;

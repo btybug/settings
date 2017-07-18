@@ -8,13 +8,13 @@
  *  * Time: 10:44 PM
  *
  */
-namespace App\Modules\Settings\Http\Controllers;
+namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Themes\Themes;
-use App\Modules\Assets\Models\LayoutUpload;
-use App\Modules\Settings\Models\Sidebar;
-use App\Modules\Settings\Models\SidebarTypes;
+use Sahakavatar\Assets\Models\LayoutUpload;
+use Sahakavatar\Settings\Models\Sidebar;
+use Sahakavatar\Settings\Models\SidebarTypes;
 use Datatables;
 use Illuminate\Http\Request;
 

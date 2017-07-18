@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\Settings\Http\Controllers;
+namespace Sahakavatar\Settings\Http\Controllers;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Controllers\Controller;

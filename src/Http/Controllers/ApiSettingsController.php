@@ -6,11 +6,11 @@
  * Time: 11:00 PM
  */
 
-namespace App\Modules\Settings\Http\Controllers;
+namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Modules\Settings\Repository\Settings;
+use Sahakavatar\Settings\Repository\Settings;
 use Socialite;
 
 class ApiSettingsController extends Controller

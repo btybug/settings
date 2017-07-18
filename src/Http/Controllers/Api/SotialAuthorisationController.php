@@ -6,7 +6,7 @@
  * Time: 12:29 PM
  */
 
-namespace App\Modules\Settings\Http\Controllers\Api;
+namespace Sahakavatar\Settings\Http\Controllers\Api;
 use Socialite;
 use Illuminate\Routing\Controller;
 use File;

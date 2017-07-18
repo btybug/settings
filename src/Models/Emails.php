@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Settings\Models;
+namespace Sahakavatar\Settings\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -36,7 +36,7 @@ class Emails extends Model
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function group(){
-        return $this->belongsTo('App\Modules\Settings\Models\EmailGroups','group_id');
+        return $this->belongsTo('Sahakavatar\Settings\Models\EmailGroups','group_id');
     }
 
 
@@ -45,6 +45,6 @@ class Emails extends Model
     }
 
     public function form(){
-    return  $this->belongsTo('App\Modules\Create\Forms','form_id');
+    return  $this->belongsTo('Sahakavatar\Create\Forms','form_id');
     }
 }

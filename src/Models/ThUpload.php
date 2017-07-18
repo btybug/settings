@@ -1,4 +1,4 @@
-<?php namespace App\Modules\Settings\Models;
+<?php namespace Sahakavatar\Settings\Models;
 
 use Illuminate\Http\Request;
 use App\helpers\helpers;
@@ -6,7 +6,7 @@ use Zipper,File;
 
 /**
  * Class ThUpload
- * @package App\Modules\Developers\Model
+ * @package Sahakavatar\Developers\Model
  */
 class ThUpload
 {

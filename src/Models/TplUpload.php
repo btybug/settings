@@ -9,7 +9,7 @@
  *
  */
 
-namespace App\Modules\Settings\Models;
+namespace Sahakavatar\Settings\Models;
 
 use Illuminate\Http\Request;
 use Symfony\Component\VarDumper\Caster\ExceptionCaster;
@@ -20,7 +20,7 @@ use Zipper,File;
 
 /**
  * Class TplUpload
- * @package App\Modules\Packeges\Models
+ * @package Sahakavatar\Packeges\Models
  */
 class TplUpload
 {

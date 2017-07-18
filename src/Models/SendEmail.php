@@ -5,16 +5,16 @@
  * Time: 1:28 PM
  */
 
-namespace App\Modules\Settings\Models;
+namespace Sahakavatar\Settings\Models;
 
-use App\Modules\Users\Models\Roles;
+use Sahakavatar\Users\Models\Roles;
 use Carbon\Carbon;
 use Mail;
 
 /**
  * Class SendEmail
  *
- * @package App\Modules\Settings\Models
+ * @package Sahakavatar\Settings\Models
  */
 class SendEmail
 {

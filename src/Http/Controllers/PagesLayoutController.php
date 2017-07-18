@@ -6,12 +6,12 @@
  * Time: 9:35 PM
  */
 
-namespace App\Modules\Settings\Http\Controllers;
+namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContentLayouts\ContentLayouts;
-use App\Modules\Resources\Models\LayoutUpload;
-use App\Modules\Resources\Models\Validation as thValid;
+use Sahakavatar\Resources\Models\LayoutUpload;
+use Sahakavatar\Resources\Models\Validation as thValid;
 use File;
 use Illuminate\Http\Request;
 use view;

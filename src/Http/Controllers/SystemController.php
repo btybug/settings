@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\Settings\Http\Controllers;
+namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\helpers\helpers;
 use App\helpers\MainHelper as Helper;
@@ -11,7 +11,7 @@ use Validator;
 
 /**
  * Class SystemController
- * @package App\Modules\Settings\Http\Controllers
+ * @package Sahakavatar\Settings\Http\Controllers
  */
 class SystemController extends Controller
 {
