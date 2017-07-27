@@ -6,16 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Moduledb;
 use Sahakavatar\Settings\Models\Filter;
-use App\helpers\helpers;
-use App\helpers\dbhelper;
 use Sahakavatar\Settings\Models\Common;
 use Sahakavatar\Create\Fields;
 use Illuminate\Support\Collection;
 use Datatables, File;
-use Sahakavatar\Users\Models\Sessions;
+use Sahakavatar\User\Models\Sessions;
 use Redirect;
 use Illuminate\Support\Facades\Session;
-use Sahakavatar\Users\User;
+use Sahakavatar\User\User;
 
 
 

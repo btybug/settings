@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 use Sahakavatar\Settings\Uploaders;
 use App\Models\Term;
 use Sahakavatar\Create\Models\CHelper;
-use App\helpers\helpers;
-use App\helpers\dbhelper;
+use Sahakavatar\Cms\Helpers\helpers;
+use Sahakavatar\Cms\Helpers\helpers;
 use Datatables;
 
 /**

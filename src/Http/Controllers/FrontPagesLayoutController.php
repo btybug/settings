@@ -50,7 +50,7 @@ class FrontPagesLayoutController extends Controller
         $this->lyUpload = $lyUpload;
 
         $this->up = config('paths.backend_themes_upl');
-        $this->dhelp = new \App\helpers\dbhelper;
+        $this->dhelp = new \Sahakavatar\Cms\Helpers\helpers;
         $this->sidebar = $sidebar;
     }
 

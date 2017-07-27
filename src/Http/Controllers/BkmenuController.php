@@ -4,9 +4,9 @@ namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Repositories\MenuRepository as Menus;
 use App\Http\Controllers\Controller;
-use App\helpers\helpers;
+use Sahakavatar\Cms\Helpers\helpers;
 use Illuminate\Http\Request;
-use Sahakavatar\Users\Models\Roles;
+use Sahakavatar\User\Models\Roles;
 use File,Auth;
 
 class BkmenuController extends Controller {

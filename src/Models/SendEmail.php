@@ -7,7 +7,7 @@
 
 namespace Sahakavatar\Settings\Models;
 
-use Sahakavatar\Users\Models\Roles;
+use Sahakavatar\User\Models\Roles;
 use Carbon\Carbon;
 use Mail;
 

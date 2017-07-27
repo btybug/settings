@@ -21,7 +21,7 @@ use Sahakavatar\Settings\Models\LayoutUpload;
 use Sahakavatar\Settings\Models\ThUpload;
 use Sahakavatar\Settings\Models\Validation as thValid;
 use Sahakavatar\Create\Models\Menu;
-use Sahakavatar\Users\Models\Roles;
+use Sahakavatar\User\Models\Roles;
 use File;
 use Illuminate\Http\Request;
 use view;

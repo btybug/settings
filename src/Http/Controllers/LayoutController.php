@@ -28,7 +28,7 @@ class LayoutController extends Controller
 
     public function __construct ()
     {
-        $this->dhelp = new \App\helpers\dbhelper;
+        $this->dhelp = new \Sahakavatar\Cms\Helpers\helpers;
     }
 
 

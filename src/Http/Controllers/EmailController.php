@@ -9,8 +9,8 @@ use App\Repositories\EmailsRepository as Emails;
 use App\Repositories\TemplatesRepository as Templates;
 use App\Models\Setting;
 use App\Models\Event;
-use App\helpers\helpers;
-use App\helpers\dbhelper;
+use Sahakavatar\Cms\Helpers\helpers;
+use Sahakavatar\Cms\Helpers\helpers;
 use Sahakavatar\Settings\Models\Common;
 use Validator,Datatables;
 

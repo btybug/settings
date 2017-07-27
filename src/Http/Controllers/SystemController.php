@@ -1,10 +1,10 @@
 <?php
 namespace Sahakavatar\Settings\Http\Controllers;
 
-use App\helpers\helpers;
+use Sahakavatar\Cms\Helpers\helpers;
 use App\helpers\MainHelper as Helper;
 use App\Http\Controllers\Controller;
-use App\Repositories\AdminsettingRepository as Settings;
+use Sahakavatar\Settings\Repository\AdminsettingRepository as Settings;
 use File;
 use Illuminate\Http\Request;
 use Validator;

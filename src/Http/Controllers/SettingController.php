@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Sahakavatar\Settings\Fesetting;
 use App\Repositories\TemplatesRepository as Templates;
 use Sahakavatar\Settings\AdminListingRepository as AdmnList;
-use App\helpers\dbhelper;
+use Sahakavatar\Cms\Helpers\helpers;
 use Session,
     URL;
 

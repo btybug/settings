@@ -11,8 +11,7 @@ namespace Sahakavatar\Settings\Repository;
 use Sahakavatar\Settings\Models\NotificationCategory;
 use Sahakavatar\Settings\Models\Notification;
 use App\Models\Setting;
-use App\helpers\helpers;
-use App\helpers\dbhelper;
+use Sahakavatar\Cms\Helpers\helpers;
 use Datatables;
 
 
