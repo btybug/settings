@@ -9,7 +9,7 @@
 namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\ContentLayouts\ContentLayouts;
+use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
 use Sahakavatar\Resources\Models\LayoutUpload;
 use Sahakavatar\Resources\Models\Validation as thValid;
 use File;

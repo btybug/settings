@@ -37,13 +37,13 @@
 @stop
 @section('CSS')
    {!! HTML::style("/admin/framework-versions/version/get-css-live") !!}
-    {!! HTML::style("resources/assets/css/core_styles.css") !!}
-    {!! HTML::style("resources/assets/css/builder-tool.css") !!}
+    {!! HTML::style("/css/core_styles.css") !!}
+    {!! HTML::style("/css/builder-tool.css") !!}
     {!! HTML::style("https://jqueryvalidation.org/files/demo/site-demos.css") !!}
 
-    {!! HTML::style('/resources/assets/css/preview-template.css') !!}
-    {!! HTML::style('/resources/assets/js/animate/css/animate.css') !!}
-    {!! HTML::style('/resources/assets/js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') !!}
+    {!! HTML::style('css/preview-template.css') !!}
+    {!! HTML::style('js/animate/css/animate.css') !!}
+    {!! HTML::style('js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') !!}
     @if(isset($model->css) && $model->css)
         @foreach($model->css as $css)
             {!! HTML::style('resources/views/ContentLayouts/'.$model->folder.'/css/'.$css) !!}
@@ -54,20 +54,20 @@
 @stop
 @section('JS')
    
-    {!! HTML::script("resources/assets/js/UiElements/bb_styles.js?v.5") !!}
-    {!! HTML::script("resources/assets/js/UiElements/bb_div.js") !!}
-    {!! HTML::script("resources/assets/js/UiElements/ui-preview-setting.js") !!}
-    {!! HTML::script("resources/assets/js/UiElements/ui-settings.js") !!}
-    {!! HTML::script("resources/assets/js/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js") !!}
+    {!! HTML::script("js/UiElements/bb_styles.js?v.5") !!}
+    {!! HTML::script("js/UiElements/bb_div.js") !!}
+    {!! HTML::script("js/UiElements/ui-preview-setting.js") !!}
+    {!! HTML::script("js/UiElements/ui-settings.js") !!}
+    {!! HTML::script("js/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js") !!}
     {!! HTML::script("https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js") !!}
     {!! HTML::script("https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js") !!}
-    {!! HTML::script("resources/assets/js/tinymice/tinymce.min.js") !!}
+    {!! HTML::script("js/tinymice/tinymce.min.js") !!}
     @if(isset($model->js) && $model->js)
         @foreach($model->js as $js)
             {!! HTML::script('/resources/views/ContentLayouts/'.$model->folder.'/js/'.$js) !!}
         @endforeach
     @endif
-    {!! HTML::script('/resources/assets/js/UiElements/content-layout-settings.js') !!}
+    {!! HTML::script('js/UiElements/content-layout-settings.js') !!}
     @yield('JS')
     @stack('javascript')
 @stop

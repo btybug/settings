@@ -1,4 +1,4 @@
-@extends('layouts.mTabs',['index'=>'settings'])
+@extends('cms::layouts.mTabs',['index'=>'settings'])
 @section('tab')
 URL menger
 @stop

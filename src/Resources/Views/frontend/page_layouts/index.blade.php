@@ -1,4 +1,4 @@
-@extends('layouts.mTabs',['index'=>'frontend'])
+@extends('cms::layouts.mTabs',['index'=>'frontend'])
 @section('tab')
     <div class="layout_container_11">
         <div role="tabpanel" class="m-t-10" id="main">

@@ -9,9 +9,9 @@
 namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\ContentLayouts\ContentLayouts as AdminTemplates;
-use App\Models\Templates\Units;
-use App\Models\Templates\Widgets;
+use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts as AdminTemplates;
+use Sahakavatar\Cms\Models\Templates\Units;
+use Sahakavatar\Cms\Models\Widgets;
 use Sahakavatar\Modules\Models\AdminPages;
 use Sahakavatar\Resources\Models\LayoutUpload;
 use Sahakavatar\Resources\Models\Validation as thValid;

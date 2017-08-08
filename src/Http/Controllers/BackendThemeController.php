@@ -12,8 +12,8 @@
 namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\ContentLayouts\ContentLayouts;
-use App\Models\Templates\UiElements;
+use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
+use Sahakavatar\Cms\Models\UiElements;
 use Sahakavatar\Resources\Models\StyleItems;
 use Sahakavatar\Resources\Models\Styles;
 use Sahakavatar\Resources\Models\BackendTh;
