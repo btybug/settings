@@ -80,7 +80,7 @@ class AdminsettingRepository extends GeneralRepository
 
                 $this->create(['settingkey' => $key, 'section' => $section, 'val' => $val]);
             } else {
-                $this->update(['val' => $val], $system->id);
+                $this->update($system->id,['val' => $val]);
             }
             $this->checkRegistration($key, $val);
         }
@@ -224,5 +224,45 @@ class AdminsettingRepository extends GeneralRepository
         }
     }
 
+    public function getBackendSettings()
+    {
+        $data = $this->findBy('section', 'backend_settings');
 
+        if($data && $data->val){
+            return json_decode($data->val,true);
+        }
+
+        return null;
+    }
+
+    public function createOrUpdateToJson($data,$section,$settingkey)
+    {
+        $result = $this->findBy('settingkey',$settingkey);
+        if($result){
+            $this->update($result->id,['val' => json_encode($data,true)]);
+        }else{
+            $this->create(['section'=>$section,'settingkey' => $settingkey,
+                'val' => json_encode($data,true)]);
+        }
+    }
+
+    public function createOrUpdate($data,$section,$settingkey)
+    {
+        $result = $this->findBy('settingkey',$settingkey);
+        if($result){
+            $this->update($result->id,$data);
+        }else{
+            $this->create(['section'=>$section,'settingkey' => $settingkey,
+                'val' => $data]);
+        }
+    }
+
+    public  function getVersionsSettings($section,$key){
+        $result = $this->model()->where('section',$section)->where('settingkey',$key)->first();
+        if($result){
+            return json_decode($result->val,true);
+        }
+
+        return [];
+    }
 }
