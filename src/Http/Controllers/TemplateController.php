@@ -14,22 +14,26 @@ namespace Sahakavatar\Settings\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use App\Models\Taxonomy;
-use Sahakavatar\Cms\Models\Templates;
+use Assets;
+use Datatables;
+use File;
+use Illuminate\Http\Request;
+use Input;
+use Sahakavatar\Cms\Helpers\helpers;
+use Sahakavatar\Cms\Helpers\helpers;
+use Sahakavatar\Cms\Models\Templates as Tpl;
 use Sahakavatar\Cms\Models\TplVariations;
 use Sahakavatar\Cms\Models\UiElements;
 use Sahakavatar\Create\Models\Corepage;
-use Illuminate\Http\Request;
 use Sahakavatar\Settings\Models\Template;
-use Sahakavatar\Cms\Helpers\helpers;
-use Sahakavatar\Cms\Helpers\helpers;
 use Sahakavatar\Settings\Models\TemplateVariations;
-use Sahakavatar\Cms\Models\Templates as Tpl;
 use Sahakavatar\Settings\Models\TplUpload;
+use Session;
+use Validator;
+use View;
+use Zipper;
+
 //use Sahakavatar\Assets\Models\Validation as validateUpl;
-use Input, Session, File, Zipper, View, Auth,
-    Validator,
-    Datatables,
-    Assets;
 
 /**
  * Class TemplateController
@@ -124,14 +128,14 @@ class TemplateController extends Controller
                 "foldername" => "frontlayouts"]
         ];
         $templates = Tpl::where('type', 'frontlayouts')->run();
-        $front_layout=true;
-        return view('settings::frontend.templates.templates', compact(['templates', 'types','front_layout']));
+        $front_layout = true;
+        return view('settings::frontend.templates.templates', compact(['templates', 'types', 'front_layout']));
     }
 
     public function activateFrontTheme($slug)
     {
-        $tpl=\App\Models\Setting::where('section','setting_system')->where('settingkey','layout')->first();
-        $tpl->val=$slug;
+        $tpl = \App\Models\Setting::where('section', 'setting_system')->where('settingkey', 'layout')->first();
+        $tpl->val = $slug;
         $tpl->save();
         return redirect()->back();
     }
@@ -395,6 +399,7 @@ class TemplateController extends Controller
         $ifrem['body'] = url('/admin/templates/settings-edit-theme', $id);
         return view('resources::preview', compact(['ui', 'id', 'ifrem', 'settings']));
     }
+
     public function TemplateLayoutPerview($id)
     {
         $slug = explode('.', $id);
@@ -404,13 +409,14 @@ class TemplateController extends Controller
         $ifrem = array();
         $htmlSettings = "No Settings!!!";
         $settings = (isset($variation->settings) && $variation->settings) ? $variation->settings : [];
-            $htmlBody = $ui->render(['settings' => $settings]);
+        $htmlBody = $ui->render(['settings' => $settings]);
         if ($ui->have_setting) {
             $htmlSettings = $ui->renderSettings(compact(['settings']));
         }
-        $layout=$id;
-        return view('settings::frontend.page_layouts.edit_page_layout', compact(['htmlBody', 'htmlSettings','layout']));
+        $layout = $id;
+        return view('settings::frontend.page_layouts.edit_page_layout', compact(['htmlBody', 'htmlSettings', 'layout']));
     }
+
     public function TemplateIframeLayout($id)
     {
         $slug = explode('.', $id);
@@ -418,18 +424,29 @@ class TemplateController extends Controller
         $variation = Tpl::findVariation($id);
         if (!$variation) echo "worrning";
         $settings = (isset($variation->settings) && $variation->settings) ? $variation->settings : [];
-            $htmlBody = $ui->render(['settings' => $settings]);
-        echo $htmlBody;die;
+        $htmlBody = $ui->render(['settings' => $settings]);
+        echo $htmlBody;
+        die;
     }
 
-    public function frontLayoutSettings($id,Request $request)
+    public function frontLayoutSettings($id, Request $request)
     {
 
-        $data=$this->getDataTpl($id);
-        if(!$data)return "warning";
-        $variation=$data['tpl'];
-        $variation->render(['settings'=>$request->all()]);
-        return \Response::json(['error'=>false]);
+        $data = $this->getDataTpl($id);
+        if (!$data) return "warning";
+        $variation = $data['tpl'];
+        $variation->render(['settings' => $request->all()]);
+        return \Response::json(['error' => false]);
+    }
+
+    protected function getDataTpl($id)
+    {
+        $slug = explode('.', $id);
+        $ui = Tpl::find($slug[0]);
+        $variation = Tpl::findVariation($id);
+        if (!$variation) return false;
+        $settings = (isset($variation->settings) && $variation->settings) ? $variation->settings : [];
+        return ['tpl' => $ui, 'variation' => $variation, 'settings' => $settings];
     }
 
     public function TemplatePerviewIframe($id, $page_id = null, $edit = false)
@@ -487,7 +504,7 @@ class TemplateController extends Controller
         $settings = (isset($variation->settings) && $variation->settings) ? $variation->settings : [];
         $slug = explode('.', $id);
         $ui = Templates::find($slug[0]);
-        $html = $ui->render(['settings' => $settings,'edit'=>true]);
+        $html = $ui->render(['settings' => $settings, 'edit' => true]);
         return \Response::json(['html' => $html, 'error' => false]);
     }
 
@@ -505,6 +522,11 @@ class TemplateController extends Controller
         return null;
     }
 
+
+
+
+    // Get Menu Data
+
     /**
      * @param Request $request
      * @return null
@@ -519,10 +541,8 @@ class TemplateController extends Controller
         return null;
     }
 
+    // Variations
 
-
-
-    // Get Menu Data
     /**
      * @param Request $request
      * @return array|null
@@ -539,7 +559,6 @@ class TemplateController extends Controller
         return null;
     }
 
-    // Variations
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -617,6 +636,8 @@ class TemplateController extends Controller
         return redirect()->back();
     }
 
+    // Activate variation
+
     /**
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
@@ -628,7 +649,6 @@ class TemplateController extends Controller
         return redirect()->back();
     }
 
-    // Activate variation
     /**
      * @param $variation
      * @return \Illuminate\Http\RedirectResponse
@@ -1113,7 +1133,6 @@ class TemplateController extends Controller
         return redirect()->back();
     }
 
-
     /**
      * @return View
      */
@@ -1121,14 +1140,5 @@ class TemplateController extends Controller
     {
         $templates = Tpl::where('general_type', 'header')->run();
         return view('settings::frontend.templates.new_templates', compact(['templates']));
-    }
-
-    protected function getDataTpl($id){
-        $slug = explode('.', $id);
-        $ui = Tpl::find($slug[0]);
-        $variation = Tpl::findVariation($id);
-        if (!$variation) return false;
-        $settings = (isset($variation->settings) && $variation->settings) ? $variation->settings : [];
-        return ['tpl'=>$ui,'variation'=>$variation,'settings'=>$settings];
     }
 }

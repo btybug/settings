@@ -3,20 +3,14 @@
 namespace Sahakavatar\Settings\Repository;
 
 
-use App\Models\Forms;
 use Sahakavatar\Cms\Repositories\GeneralRepository;
 
 class AdminsettingRepository extends GeneralRepository
 {
 
 
-   protected function model()
-   {
-      return new \Sahakavatar\Settings\Models\Settings();
-   }
-
-
-    public function defaultSettings(){
+    public function defaultSettings()
+    {
         $media_settings = [];
         $rs = $this->findAllBy('section', 'media');
         foreach ($rs as $sngl_setting) {
@@ -67,7 +61,6 @@ class AdminsettingRepository extends GeneralRepository
 
     }
 
-
     /**
      * @param $data
      * @param string $section
@@ -75,14 +68,23 @@ class AdminsettingRepository extends GeneralRepository
     public function updateSystemSettings($data, $section = "setting_system")
     {
         foreach ($data as $key => $val) {
+            if (is_array($val)) $val = json_encode($val, true);
             $system = $this->model->where('settingkey', $key)->where('section', $section)->first();
             if (!$system) {
 
                 $this->create(['settingkey' => $key, 'section' => $section, 'val' => $val]);
             } else {
-                $this->update($system->id,['val' => $val]);
+                $this->update($system->id, ['val' => $val]);
             }
             $this->checkRegistration($key, $val);
+        }
+    }
+
+    private function checkRegistration($key, $value)
+    {
+        if ($key == 'enable_registration' && $value == 0) {
+            Forms::where('slug', '58vg8d7vw4nhn1')
+                ->update(['blocked' => 1]);
         }
     }
 
@@ -127,9 +129,9 @@ class AdminsettingRepository extends GeneralRepository
         return $system;
     }
 
-    public function getSettings($section,$settingkey)
+    public function getSettings($section, $settingkey)
     {
-        $system = $this->model->where('section', $section)->where('settingkey',$settingkey)->first();
+        $system = $this->model->where('section', $section)->where('settingkey', $settingkey)->first();
 
         return $system;
     }
@@ -209,7 +211,7 @@ class AdminsettingRepository extends GeneralRepository
 
         foreach ($titles as $key => $val) {
             if (trim($val) != '') {
-                $data[] = ['title' => $val,'width'=>$widths[$key],'height'=>$heights[$key]];
+                $data[] = ['title' => $val, 'width' => $widths[$key], 'height' => $heights[$key]];
             }
         }
         $rs = $this->model->select('id', 'val')->where('section', 'media')->where('settingkey', 'thumbs')->first();
@@ -217,52 +219,51 @@ class AdminsettingRepository extends GeneralRepository
         $this->updateRich(['val' => $data], $rs->id);
     }
 
-    private function checkRegistration($key, $value) {
-        if($key == 'enable_registration' && $value == 0) {
-             Forms::where('slug', '58vg8d7vw4nhn1')
-                ->update(['blocked' => 1]);
-        }
-    }
-
     public function getBackendSettings()
     {
         $data = $this->findBy('section', 'backend_settings');
 
-        if($data && $data->val){
-            return json_decode($data->val,true);
+        if ($data && $data->val) {
+            return json_decode($data->val, true);
         }
 
         return null;
     }
 
-    public function createOrUpdateToJson($data,$section,$settingkey)
+    public function createOrUpdateToJson($data, $section, $settingkey)
     {
-        $result = $this->findBy('settingkey',$settingkey);
-        if($result){
-            $this->update($result->id,['val' => json_encode($data,true)]);
-        }else{
-            $this->create(['section'=>$section,'settingkey' => $settingkey,
-                'val' => json_encode($data,true)]);
+        $result = $this->findBy('settingkey', $settingkey);
+        if ($result) {
+            $this->update($result->id, ['val' => json_encode($data, true)]);
+        } else {
+            $this->create(['section' => $section, 'settingkey' => $settingkey,
+                'val' => json_encode($data, true)]);
         }
     }
 
-    public function createOrUpdate($data,$section,$settingkey)
+    public function createOrUpdate($data, $section, $settingkey)
     {
-        $result = $this->findBy('settingkey',$settingkey);
-        if($result){
-            $this->update($result->id,$data);
-        }else{
-            $this->create(['section'=>$section,'settingkey' => $settingkey,
+        $result = $this->findBy('settingkey', $settingkey);
+        if ($result) {
+            $this->update($result->id, $data);
+        } else {
+            $this->create(['section' => $section, 'settingkey' => $settingkey,
                 'val' => $data]);
         }
     }
 
-    public  function getVersionsSettings($section,$key){
-        $result = $this->model()->where('section',$section)->where('settingkey',$key)->first();
-        if($result){
-            return json_decode($result->val,true);
+    public function getVersionsSettings($section, $key)
+    {
+        $result = $this->model()->where('section', $section)->where('settingkey', $key)->first();
+        if ($result) {
+            return json_decode($result->val, true);
         }
 
         return [];
+    }
+
+    protected function model()
+    {
+        return new \Sahakavatar\Settings\Models\Settings();
     }
 }

@@ -9,7 +9,6 @@ Breadcrumbs::register(
 );
 
 
-
 Breadcrumbs::register(
     'settings_tbl',
     function ($breadcrumbs) {

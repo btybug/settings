@@ -12,6 +12,6 @@
 */
 
 
-Route::group(['prefix' => '/admin/settings','middleware' => ['admin:Users']], function() {
-	Route::controller('/emails','EmailsController');
+Route::group(['prefix' => '/admin/settings', 'middleware' => ['admin:Users']], function () {
+    Route::controller('/emails', 'EmailsController');
 });

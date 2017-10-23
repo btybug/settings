@@ -15,7 +15,9 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label f-w-100 text-left">Redirect URI</label>
                     <div class="col-sm-6"> {!! Form::text(null,@$config['twitter']['redirect'],['class'=>'form-control']) !!} </div>
-                    <div class="col-sm-2"> <a class="btn btn-warning btn-sm btn-block"  href="{!! url('api/social-network/auth/twitter') !!}" role="button">Authorizing</a> </div>
+                    <div class="col-sm-2"><a class="btn btn-warning btn-sm btn-block"
+                                             href="{!! url('api/social-network/auth/twitter') !!}" role="button">Authorizing</a>
+                    </div>
 
                 </div>
             </div>

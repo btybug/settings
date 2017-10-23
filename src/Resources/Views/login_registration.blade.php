@@ -1,39 +1,42 @@
 @extends('cms::layouts.mTabs',['index'=>'settings'])
 @section('tab')
 
-<div class="tab-pane fade in active m-t-10" id="login">
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 panels_wrapper panel_wrap">
-            <!-- begin panel -->
-            <div class="panel panel-default panels accordion_panels">
-                <div class="panel-heading bg-black-darker text-white" role="tab" id="headingLink">
-                <span  class="panel_title">Login Configuration</span>
-                <a role="button" class="panelcollapsed collapsed" data-toggle="collapse"
-                   data-parent="#accordion" href="#collapseLink1" aria-expanded="true" aria-controls="collapseLink1">
-                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                </a>
-                    <ul class="list-inline panel-actions">
-                        <li><a href="#" panel-fullscreen="true" role="button" title="Toggle fullscreen"><i class="glyphicon glyphicon-resize-full"></i></a></li>
-                    </ul>
+    <div class="tab-pane fade in active m-t-10" id="login">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 panels_wrapper panel_wrap">
+                <!-- begin panel -->
+                <div class="panel panel-default panels accordion_panels">
+                    <div class="panel-heading bg-black-darker text-white" role="tab" id="headingLink">
+                        <span class="panel_title">Login Configuration</span>
+                        <a role="button" class="panelcollapsed collapsed" data-toggle="collapse"
+                           data-parent="#accordion" href="#collapseLink1" aria-expanded="true"
+                           aria-controls="collapseLink1">
+                            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                        </a>
+                        <ul class="list-inline panel-actions">
+                            <li><a href="#" panel-fullscreen="true" role="button" title="Toggle fullscreen"><i
+                                            class="glyphicon glyphicon-resize-full"></i></a></li>
+                        </ul>
                     </div>
-                <div id="collapseLink1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingLink">
-                <div class="panel-body panel_body panel_1 show">
-                    {!! Form::open(['route' => 'system.store','role' => 'form', 'class'=>'config-form ']) !!}
-                    @include('settings::forms._login_form')
-                    {!! Form::close() !!}
+                    <div id="collapseLink1" class="panel-collapse collapse in" role="tabpanel"
+                         aria-labelledby="headingLink">
+                        <div class="panel-body panel_body panel_1 show">
+                            {!! Form::open(['route' => 'system.store','role' => 'form', 'class'=>'config-form ']) !!}
+                            @include('settings::forms._login_form')
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
+
+                {{--{!! Form::open(['route' => 'general.socialLoginStore','role' => 'form', 'class'=>'social-login-form form-horizontal']) !!}--}}
+                {{--@include('settings::forms._social_logins_form')--}}
+                {{--{!! Form::hidden('config_type','social_login')!!}--}}
+                {{--{!! Form::close() !!}--}}
+
+                <!-- end panel -->
                 </div>
             </div>
-
-            {{--{!! Form::open(['route' => 'general.socialLoginStore','role' => 'form', 'class'=>'social-login-form form-horizontal']) !!}--}}
-            {{--@include('settings::forms._social_logins_form')--}}
-            {{--{!! Form::hidden('config_type','social_login')!!}--}}
-            {{--{!! Form::close() !!}--}}
-
-                    <!-- end panel -->
-             </div>
         </div>
     </div>
-</div>
 
 @stop
 

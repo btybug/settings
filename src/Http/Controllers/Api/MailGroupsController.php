@@ -43,7 +43,7 @@ class MailGroupsController extends Controller
      */
     public function getGroup($id)
     {
-        return $this->email_groups->findGroup($id,'json');
+        return $this->email_groups->findGroup($id, 'json');
 
     }
 

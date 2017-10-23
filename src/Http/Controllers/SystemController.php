@@ -1,12 +1,13 @@
 <?php
+
 namespace Sahakavatar\Settings\Http\Controllers;
 
-use Sahakavatar\Cms\Helpers\helpers;
 use App\helpers\MainHelper as Helper;
 use App\Http\Controllers\Controller;
-use Sahakavatar\Settings\Repository\AdminsettingRepository as Settings;
 use File;
 use Illuminate\Http\Request;
+use Sahakavatar\Cms\Helpers\helpers;
+use Sahakavatar\Settings\Repository\AdminsettingRepository as Settings;
 use Validator;
 
 /**
@@ -28,7 +29,7 @@ class SystemController extends Controller
      * SystemController constructor.
      * @param Settings $settings
      */
-    public function __construct (Settings $settings)
+    public function __construct(Settings $settings)
     {
         $this->helpers = new helpers;
         $this->settings = $settings;
@@ -37,7 +38,7 @@ class SystemController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getIndex ()
+    public function getIndex()
     {
         $languages = Helper::getAllLanguages();
         $config = Helper::getConfiguration();
@@ -45,12 +46,12 @@ class SystemController extends Controller
         $groups = [];//MemberGroups::pluck('title', 'id');
         $system = $this->settings->getSystemSettings();
         $data = [
-            'groups'    => $groups,
+            'groups' => $groups,
             'languages' => $languages,
-            'config'    => $config,
+            'config' => $config,
             'timezones' => $timezones,
-            'category'  => null,
-            'system'    => $system
+            'category' => null,
+            'system' => $system
         ];
 
         return view('settings::system', $data);
@@ -59,7 +60,7 @@ class SystemController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getMain ()
+    public function getMain()
     {
         $system = $this->settings->getSystemSettings();
         $languages = Helper::getAllLanguages();
@@ -67,21 +68,21 @@ class SystemController extends Controller
         $timezones = Helper::getAllTimezones();
         $groups = [];//MemberGroups::pluck('title', 'id');
         $data = [
-            'groups'    => $groups,
+            'groups' => $groups,
             'languages' => $languages,
-            'config'    => $config,
+            'config' => $config,
             'timezones' => $timezones,
-            'category'  => null,
-            'system'    => $system
+            'category' => null,
+            'system' => $system
         ];
-        return view('settings::frontend.main',$data);
+        return view('settings::frontend.main', $data);
     }
 
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postMain (Request $request)
+    public function postMain(Request $request)
     {
         $input = $request->except('_token');
         if ($request->file('site_logo')) {
@@ -101,7 +102,7 @@ class SystemController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getNotifications ()
+    public function getNotifications()
     {
 
         return view('settings::notifications');
@@ -110,7 +111,7 @@ class SystemController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getUrlMenger ()
+    public function getUrlMenger()
     {
 
         return view('settings::url_menger');
@@ -119,7 +120,7 @@ class SystemController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getLoginRegistration ()
+    public function getLoginRegistration()
     {
         $languages = Helper::getAllLanguages();
         $config = Helper::getConfiguration();
@@ -127,12 +128,12 @@ class SystemController extends Controller
         $groups = [];//MemberGroups::pluck('title', 'id');
         $system = $this->settings->getSystemSettings();
         $data = [
-            'groups'    => $groups,
+            'groups' => $groups,
             'languages' => $languages,
-            'config'    => $config,
+            'config' => $config,
             'timezones' => $timezones,
-            'category'  => null,
-            'system'    => $system
+            'category' => null,
+            'system' => $system
         ];
 
         return view('settings::login_registration', $data);
@@ -143,7 +144,7 @@ class SystemController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function storeSystem (Request $request)
+    public function storeSystem(Request $request)
     {
         $input = $request->except('_token');
         $this->settings->updateSystemSettings($input);
@@ -156,10 +157,10 @@ class SystemController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function saveSocialApiKeys (Request $request)
+    public function saveSocialApiKeys(Request $request)
     {
         $input = $request->except(['_token']);
-        if ( $this->settings->saveSocialApiKey($input)) {
+        if ($this->settings->saveSocialApiKey($input)) {
             return redirect()->back();
         }
     }
@@ -168,7 +169,7 @@ class SystemController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function urlManager (Request $request)
+    public function urlManager(Request $request)
     {
         $data = $request->all();
         if ($this->settings->urlManager($data)) {
@@ -179,7 +180,7 @@ class SystemController extends Controller
     /**
      * @return mixed
      */
-    public function getAdminemails ()
+    public function getAdminemails()
     {
         $emails = [];
         $data = $this->settings->findAllBy('section', 'admin_emails')->toArray();
@@ -194,17 +195,17 @@ class SystemController extends Controller
     /**
      * @param Request $request
      */
-    public function postAdminemails (Request $request)
+    public function postAdminemails(Request $request)
     {
         $input = $request->except('_token');
 
         $validator = Validator::make(
             $request->all(),
             [
-                'info'            => 'required|email',
-                'support'         => 'required|email',
-                'admin'           => 'required|email',
-                'sales'           => 'required|email',
+                'info' => 'required|email',
+                'support' => 'required|email',
+                'admin' => 'required|email',
+                'sales' => 'required|email',
                 'technical_staff' => 'required|email',
             ]
         );

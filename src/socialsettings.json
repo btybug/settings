@@ -1,1 +1,18 @@
-{"facebook":{"client_id":"1095421667204970","client_secret":"6eee112b09ceeca928371fc7167f6015"},"twitter":{"client_id":"yiywWPZLgIacShqy88B1iW7sR","client_secret":"5V7GrfqTeMJx5S6k0r0yoG3msevELseQaxuUvXiQvdAQMidGMg"},"google":{"client_id":"538536787017-shq2hr00940d9sg3ksnv5hk70ecann3d.apps.googleusercontent.com","client_secret":"QILEf7_4VT2Td55L9dQy_rjB"},"github":{"client_id":"","client_secret":""}}
+{
+  "facebook": {
+    "client_id": "1095421667204970",
+    "client_secret": "6eee112b09ceeca928371fc7167f6015"
+  },
+  "twitter": {
+    "client_id": "yiywWPZLgIacShqy88B1iW7sR",
+    "client_secret": "5V7GrfqTeMJx5S6k0r0yoG3msevELseQaxuUvXiQvdAQMidGMg"
+  },
+  "google": {
+    "client_id": "538536787017-shq2hr00940d9sg3ksnv5hk70ecann3d.apps.googleusercontent.com",
+    "client_secret": "QILEf7_4VT2Td55L9dQy_rjB"
+  },
+  "github": {
+    "client_id": "",
+    "client_secret": ""
+  }
+}

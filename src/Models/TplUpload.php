@@ -11,12 +11,12 @@
 
 namespace Sahakavatar\Settings\Models;
 
-use Illuminate\Http\Request;
-use Symfony\Component\VarDumper\Caster\ExceptionCaster;
-use Sahakavatar\Cms\Helpers\helpers;
 use App\Models\MenuData;
+use File;
+use Illuminate\Http\Request;
+use Sahakavatar\Cms\Helpers\helpers;
 use Sahakavatar\Cms\Models\Templates as Tpl;
-use Zipper,File;
+use Zipper;
 
 /**
  * Class TplUpload
@@ -122,7 +122,7 @@ class TplUpload
     public function extract()
     {
         $fileName = $this->fileNmae;
-        $this->generatedName = $fileName.'_'.uniqid();
+        $this->generatedName = $fileName . '_' . uniqid();
         File::makeDirectory($this->uf . $this->generatedName);
         Zipper::make($this->uf . "/" . $fileName . self::ZIP)->extractTo($this->uf . $this->generatedName . '/');
     }
@@ -132,18 +132,18 @@ class TplUpload
      * @param $name
      * @return array|string
      */
-    public function validatConfAndMoveToMain($folder, $name,$type)
+    public function validatConfAndMoveToMain($folder, $name, $type)
     {
         if (File::exists($this->uf . $folder . '/' . 'config.json')) {
             $file = $this->uf . $folder . '/' . 'config.json';
-            $response =  $this->validate($file, $folder,$type);
-            if($response['error'])
+            $response = $this->validate($file, $folder, $type);
+            if ($response['error'])
                 return $response;
 
-            if(isset($response['data']['main_type'])){
-                $this->dir = config('paths.template_path') . $response['data']['main_type'] .'/'. $response['data']['type'] .'/'.$folder;
-            }else{
-                $this->dir = config('paths.template_path'). $response['data']['type'].'/'.$folder;
+            if (isset($response['data']['main_type'])) {
+                $this->dir = config('paths.template_path') . $response['data']['main_type'] . '/' . $response['data']['type'] . '/' . $folder;
+            } else {
+                $this->dir = config('paths.template_path') . $response['data']['type'] . '/' . $folder;
             }
 
             File::copyDirectory($this->uf . $folder, $this->dir);
@@ -152,20 +152,20 @@ class TplUpload
         } else {
             if (File::exists($this->uf . $folder . '/' . $name . '/' . 'config.json')) {
                 $file = $this->uf . $folder . '/' . $name . '/' . 'config.json';
-                $response =  $this->validate($file, $folder,$type);
-                if($response['error'])
+                $response = $this->validate($file, $folder, $type);
+                if ($response['error'])
                     return $response;
 
-                if(isset($response['data']['main_type'])){
-                    $this->dir = config('paths.template_path'). $response['data']['main_type'] .'/'. $response['data']['type'] .'/'.$folder;
-                }else{
-                    $this->dir = config('paths.template_path'). $response['data']['type'].'/'.$folder;
+                if (isset($response['data']['main_type'])) {
+                    $this->dir = config('paths.template_path') . $response['data']['main_type'] . '/' . $response['data']['type'] . '/' . $folder;
+                } else {
+                    $this->dir = config('paths.template_path') . $response['data']['type'] . '/' . $folder;
                 }
 
-                File::copyDirectory($this->uf . $folder. '/' . $name, $this->dir);
+                File::copyDirectory($this->uf . $folder . '/' . $name, $this->dir);
 
                 return $response;
-            }else{
+            } else {
                 return ['error' => 'true', 'message' => 'config.json file is not exists'];
             }
         }
@@ -178,21 +178,21 @@ class TplUpload
      * @param $key
      * @return array
      */
-    private function validate($file, $key,$type)
+    private function validate($file, $key, $type)
     {
         $conf = File::get($file);
         if ($conf) {
             $conf = json_decode($conf, true);
             if (!isset($conf['type']))
                 return ['message' => 'Type are required', 'code' => '404', 'error' => true];
-            if($conf['type'] != $type)
+            if ($conf['type'] != $type)
                 return ['message' => 'Please Uplaod in correct Place, Type is not match', 'code' => '404', 'error' => true];
 
             $conf['slug'] = (string)$key;
             $conf['created_at'] = time('now');
             $json = json_encode($conf, true);
             File::put($file, $json);
-            return ['data' => $conf,'code' => '200', 'error' => false];
+            return ['data' => $conf, 'code' => '200', 'error' => false];
         }
 
         return ['message' => 'Json file is empty !!!', 'code' => '404', 'error' => true];
@@ -209,20 +209,46 @@ class TplUpload
 
     /**
      * @param $data
+     */
+    public function makeWidgets($data)
+    {
+        $widget_path = $this->dir . '/installable/widgets';
+        if (File::isDirectory($widget_path)) {
+            $widgets = File::directories($widget_path);
+            if ($widgets) {
+                foreach ($widgets as $widget) {
+                    if (File::exists($widget . '/config.json')) {
+                        $conf = json_decode(File::get($widget . '/config.json'), true);
+                        if ($conf) {
+                            $conf['slug'] = uniqid();
+                            $json = json_encode($conf, true);
+                            File::put($widget . '/config.json', $json);
+                            rename($widget, $widget_path . '/' . $conf['slug']);
+                            $this->dir = $widget_path . '/' . $conf['slug'];
+                            $this->makeVariations($conf);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * @param $data
      * @return array
      */
     public function makeVariations($data)
     {
         $variation_path = $this->dir . '/variations';
         if (File::isDirectory($variation_path)) {
-            if($files = File::allFiles($variation_path)){
+            if ($files = File::allFiles($variation_path)) {
                 foreach ($files as $file) {
                     if (File::extension($file) == 'json') {
                         $json = File::get($file);
                         if ($json) {
                             $json = json_decode($json, true);
                             $json['id'] = (string)$data['slug'] . '.' . uniqid();
-                            File::put($variation_path . '/' . $json['id'] . '.json', json_encode($json,true));
+                            File::put($variation_path . '/' . $json['id'] . '.json', json_encode($json, true));
                             File::delete($file);
                         }
                     }
@@ -231,31 +257,6 @@ class TplUpload
             }
         }
         File::makeDirectory($variation_path);
-        Tpl::find($data['slug'])->makeVariation(['title'=> 'main variation'])->save();
-    }
-
-    /**
-     * @param $data
-     */
-    public function makeWidgets($data){
-        $widget_path = $this->dir . '/installable/widgets';
-        if (File::isDirectory($widget_path)) {
-            $widgets = File::directories($widget_path);
-            if($widgets){
-                foreach ($widgets as $widget) {
-                    if(File::exists($widget . '/config.json')){
-                        $conf = json_decode(File::get($widget . '/config.json'),true);
-                        if($conf){
-                            $conf['slug'] = uniqid();
-                            $json = json_encode($conf, true);
-                            File::put($widget . '/config.json',$json);
-                            rename( $widget, $widget_path.'/'.$conf['slug']);
-                            $this->dir = $widget_path . '/'. $conf['slug'];
-                            $this->makeVariations($conf);
-                        }
-                    }
-                }
-            }
-        }
+        Tpl::find($data['slug'])->makeVariation(['title' => 'main variation'])->save();
     }
 }

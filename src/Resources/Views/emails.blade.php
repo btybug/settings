@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 @section('content')
 
-   {!! 'this is Settings addon simple page' !!}
+    {!! 'this is Settings addon simple page' !!}
 
 @stop
- @section('CSS')
+@section('CSS')
 
 @stop
- @section('JS')
+@section('JS')
 
 @stop
 

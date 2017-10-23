@@ -2,10 +2,8 @@
 
 namespace Sahakavatar\Settings\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use App\helpers\setres;
-
-use Response;
+use Illuminate\Database\Eloquent\Model;
 
 class EmailGroups extends Model
 {
@@ -81,7 +79,7 @@ class EmailGroups extends Model
     {
         $response = [];
         if (!$id) {
-          return null;
+            return null;
         } else {
             $model = self::find($id);
             if (!$model) {

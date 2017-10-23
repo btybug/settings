@@ -8,11 +8,10 @@
 
 namespace Sahakavatar\Settings\Repository;
 
-use Sahakavatar\Settings\Models\NotificationCategory;
-use Sahakavatar\Settings\Models\Notification;
 use App\Models\Setting;
-use Sahakavatar\Cms\Helpers\helpers;
 use Datatables;
+use Sahakavatar\Cms\Helpers\helpers;
+use Sahakavatar\Settings\Models\NotificationCategory;
 
 
 /**
@@ -46,11 +45,6 @@ class Notifications
         return compact(['form_fields', 'columns']);
     }
 
-    public function getCat($id)
-    {
-        return NotificationCategory::find($id);
-    }
-
     /**
      * @param $id
      */
@@ -69,7 +63,13 @@ class Notifications
 
     }
 
-    public function saveCat($request){
+    public function getCat($id)
+    {
+        return NotificationCategory::find($id);
+    }
+
+    public function saveCat($request)
+    {
         $data = $request->except(['_token']);
         NotificationCategory::find($request->id)->update($data);
         $this->helpers->updatesession();

@@ -2,9 +2,9 @@
 
 namespace Sahakavatar\Settings\Models;
 
-use Sahakavatar\Create\Fields;
 use App\Models\Moduledb;
 use File;
+use Sahakavatar\Create\Fields;
 
 /**
  * Class Common
@@ -110,6 +110,31 @@ class Common
         return $data;
     }
 
+    public function updateFilter($request)
+    {
+        $id = $request->id;
+        $data = config('admin.filters');
+        $info = $data[$id];
+        $info['title'] = $request->title;
+        $info['filter_data'] = $request->return_result;
+        $data[$id] = $info;
+        $this->updateFilterFile($data);
+        $data = [
+            'id' => str_replace(".json", "", $info['file_name']), //$filter->id,
+            'module_name' => $info['module'],
+            'info' => $request->filter_json
+        ];
+        $this->mkJson($data);
+    }
+
+    public function updateFilterFile($data)
+    {
+        $path = 'appdata/config/admin/filters.php';
+        $data = var_export($data, 1);
+        File::put($path, "<?php\n return $data ;");
+
+    }
+
     /**
      * Generate Json At Given Path
      *
@@ -127,23 +152,6 @@ class Common
         $path = $modules . "/" . $id . ".json";
         File::put($path, $info);
     }
-    
-    public function updateFilter($request){
-        $id = $request->id;
-        $data = config('admin.filters');
-        $info = $data[$id];
-        $info['title'] = $request->title;
-        $info['filter_data'] = $request->return_result;
-        $data[$id] = $info;
-        $this->updateFilterFile($data);
-        $data = [
-            'id' => str_replace(".json","" , $info['file_name']), //$filter->id,
-            'module_name' => $info['module'],
-            'info' => $request->filter_json
-        ];
-        $this->mkJson($data);
-    }
-    
 
     public function updateFiltersArr($request, $module)
     {
@@ -159,14 +167,6 @@ class Common
         $key++;
         $data[$key] = $new_data;
         $this->updateFilterFile($data);
-    }
-
-    public function updateFilterFile($data)
-    {
-        $path = 'appdata/config/admin/filters.php';
-        $data = var_export($data, 1);
-        File::put($path, "<?php\n return $data ;");
-
     }
 
     public function delJson($id)
@@ -196,12 +196,12 @@ class Common
             $main_type = Fields::getFieldTarget($field);
 
             $data = [
-              "model" => $field->model,
-              "main_type" => ($main_type) ? $main_type : '',
-              "field_type" => $field->filter_option
+                "model" => $field->model,
+                "main_type" => ($main_type) ? $main_type : '',
+                "field_type" => $field->filter_option
             ];
 
-            $json = json_encode($data,true);
+            $json = json_encode($data, true);
         }
         return $json;
     }

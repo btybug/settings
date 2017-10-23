@@ -9,14 +9,14 @@
 namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use File;
+use Illuminate\Http\Request;
 use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts as AdminTemplates;
 use Sahakavatar\Cms\Models\Templates\Units;
 use Sahakavatar\Cms\Models\Widgets;
 use Sahakavatar\Modules\Models\AdminPages;
 use Sahakavatar\Resources\Models\LayoutUpload;
 use Sahakavatar\Resources\Models\Validation as thValid;
-use File;
-use Illuminate\Http\Request;
 use view;
 
 
@@ -60,11 +60,13 @@ class AdminTemplatesController extends Controller
         $layouts = AdminTemplates::findByType('admin_template');
         return view("settings::admin_templates.page_templates", compact(['layouts']));
     }
+
     public function getMainBody()
     {
         $layouts = AdminTemplates::findByType('main_body');
         return view("settings::admin_templates.main_body", compact(['layouts']));
     }
+
     public function getUnits(Request $request)
     {
         $slug = $request->get('p');
@@ -72,24 +74,24 @@ class AdminTemplatesController extends Controller
         $types = [];
         $ui_elemements = null;
         $unit = null;
-        if(count( $this->unitTypes)){
-            foreach($this->unitTypes as $unitType){
+        if (count($this->unitTypes)) {
+            foreach ($this->unitTypes as $unitType) {
                 $types[$unitType['foldername']] = $unitType['title'];
             }
 
-            $main_type =$this->unitTypes[0]['foldername'];
-            if($type){
+            $main_type = $this->unitTypes[0]['foldername'];
+            if ($type) {
                 $main_type = $type;
             }
 
-            $ui_elemements = Units::getAllUnits()->where('type',$main_type )->run();
-            if($slug){
+            $ui_elemements = Units::getAllUnits()->where('type', $main_type)->run();
+            if ($slug) {
                 $unit = Units::find($slug);
-            }else{
+            } else {
                 $unit = Units::find($ui_elemements[0]->slug);
             }
         }
-        return view("settings::admin_templates.units",compact(['ui_elemements','types','unit','type']));
+        return view("settings::admin_templates.units", compact(['ui_elemements', 'types', 'unit', 'type']));
     }
 
 

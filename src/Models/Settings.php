@@ -4,16 +4,16 @@ namespace Sahakavatar\Settings\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Settings extends Model 
+class Settings extends Model
 {
-  
+
     /**
      * The database table used by the model.
      *
      * @var string
      */
     protected $table = 'settings';
-    
+
     protected $settinds;
 
     /**
@@ -29,16 +29,17 @@ class Settings extends Model
      * @var array
      */
     protected $dates = ['created_at', 'updated_at'];
-    
-    public function newSettings(array $data){
-        
+
+    public function newSettings(array $data)
+    {
+
     }
 
-    public function scopeMedia ($query)
+    public function scopeMedia($query)
     {
-        return $query->where('section','media');
+        return $query->where('section', 'media');
     }
-    
+
 }
 
 

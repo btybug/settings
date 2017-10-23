@@ -7,6 +7,7 @@
  */
 
 namespace Sahakavatar\Settings\Repository;
+
 use App\Models\Setting;
 use Sahakavatar\Cms\Helpers\helpers;
 

@@ -31,12 +31,14 @@ class ApiSettingsController extends Controller
     {
 
         $settings = $this->settings->getSettings();
-        $config=\Config::get('services');
-        return view('settings::settings.index', compact(['settings','config']));
+        $config = \Config::get('services');
+        return view('settings::settings.index', compact(['settings', 'config']));
     }
-    public function getTest(){
+
+    public function getTest()
+    {
         $user = Socialite::driver('github')->user();
-        if($user){
+        if ($user) {
             dd($user);
 
         }
@@ -48,9 +50,9 @@ class ApiSettingsController extends Controller
      */
     public function postUpdate(Request $request)
     {
-        $data=$request->all();
+        $data = $request->all();
         unset($data['_token']);
-       \File::put(base_path('app/Modules/Settings/socialsettings.json'),json_encode($data,true),true);
+        \File::put(base_path('app/Modules/Settings/socialsettings.json'), json_encode($data, true), true);
         $this->settings->updateSeoSettings($request);
 
         return redirect($this->home);

@@ -19,10 +19,10 @@
 namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Sahakavatar\Settings\Models\Sidebar;
-use Sahakavatar\Settings\Models\SidebarTypes;
 use Datatables;
 use Illuminate\Http\Request;
+use Sahakavatar\Settings\Models\Sidebar;
+use Sahakavatar\Settings\Models\SidebarTypes;
 
 
 /**
@@ -45,7 +45,7 @@ class FrontPagesLayoutController extends Controller
      * BackendThemeController constructor.
      * @param ThUpload $thUpload
      */
-    public function __construct (LayoutUpload $lyUpload, Sidebar $sidebar)
+    public function __construct(LayoutUpload $lyUpload, Sidebar $sidebar)
     {
         $this->lyUpload = $lyUpload;
 
@@ -58,18 +58,18 @@ class FrontPagesLayoutController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getPageLayout ()
+    public function getPageLayout()
     {
         $form_fields = [
-            '#'            => '#',
-            'title'        => 'Title',
-            "has_header"   => "Has Header",
-            "has_footer"   => "Has Footer",
+            '#' => '#',
+            'title' => 'Title',
+            "has_header" => "Has Header",
+            "has_footer" => "Has Footer",
             "has_sidebar1" => "Has Sidebar1",
             "has_sidebar2" => "Has Sidebar2",
-            "extratop"     => "Has Extra Top",
-            "extrabottom"  => "Has Extra Bottom",
-            'action'       => 'Action'
+            "extratop" => "Has Extra Top",
+            "extrabottom" => "Has Extra Bottom",
+            'action' => 'Action'
         ];
 
         $columns = $this->dhelp->getColumnsJson($form_fields);
@@ -80,7 +80,7 @@ class FrontPagesLayoutController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getPageLayoutBuilder ()
+    public function getPageLayoutBuilder()
     {
         $sidebars = Sidebars::pluck('name', 'id');
         $types = SidebarTypes::extra()->get();
@@ -92,7 +92,7 @@ class FrontPagesLayoutController extends Controller
     /**
      * @param Request $request
      */
-    public function postDeletebulk (Request $request)
+    public function postDeletebulk(Request $request)
     {
         $vals = $request->get('vals');
         $ids = explode(",", $vals);
@@ -109,7 +109,7 @@ class FrontPagesLayoutController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postDeleteLayout (Request $request)
+    public function postDeleteLayout(Request $request)
     {
         $layout = Layouts::find($request->get('id'));
 
@@ -124,7 +124,7 @@ class FrontPagesLayoutController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function postPageLayoutBuilder (Request $request)
+    public function postPageLayoutBuilder(Request $request)
     {
         $layout = [];
         $data = $request->all();
@@ -151,7 +151,7 @@ class FrontPagesLayoutController extends Controller
     /**
      * @return mixed
      */
-    public function getDataLayouts ()
+    public function getDataLayouts()
     {
         $data = Layouts::all();
         $obj = Datatables::of($data);
@@ -253,7 +253,7 @@ class FrontPagesLayoutController extends Controller
             $this->dhelp->actionBtns(
                 [
                     'delete_post' => ['link' => '/admin/settings/frontend/delete-layout', 'id' => '{!! $id !!}'],
-                    'edit'        => ['link' => '/admin/settings/frontend/edit-page-layout/{!! $id !!}'],
+                    'edit' => ['link' => '/admin/settings/frontend/edit-page-layout/{!! $id !!}'],
                 ]
             )
         );
@@ -267,7 +267,7 @@ class FrontPagesLayoutController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function getEditPageLayout ($id)
+    public function getEditPageLayout($id)
     {
         if ($layout = Layouts::find($id)) {
             $sidebars = $this->sidebar->all()->pluck('name', 'id');
@@ -275,7 +275,7 @@ class FrontPagesLayoutController extends Controller
 
             if ($layout->data_option) {
                 $options = json_decode($layout->data_option, true);
-                if (! empty($options)) {
+                if (!empty($options)) {
                     foreach ($options as $val) {
                         if (key($val) == 'extra_types') {
                             if (count($val)) {
@@ -302,7 +302,7 @@ class FrontPagesLayoutController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function getEditPageLayoutDesktop ($id)
+    public function getEditPageLayoutDesktop($id)
     {
         if ($layout = Layouts::find($id)) {
             $sidebars = Sidebars::pluck('name', 'id');
@@ -317,7 +317,7 @@ class FrontPagesLayoutController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function getEditPageLayoutLandscape ($id)
+    public function getEditPageLayoutLandscape($id)
     {
         if ($layout = Layouts::find($id)) {
             return view('settings::frontend.page_layouts.edit_page_layout_landscape', compact(['layout']));
@@ -330,7 +330,7 @@ class FrontPagesLayoutController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function getEditPageLayoutPortrait ($id)
+    public function getEditPageLayoutPortrait($id)
     {
         if ($layout = Layouts::find($id)) {
             return view('settings::frontend.page_layouts.edit_page_layout_portrait', compact(['layout']));
@@ -343,7 +343,7 @@ class FrontPagesLayoutController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function getEditPageLayoutMobile ($id)
+    public function getEditPageLayoutMobile($id)
     {
         if ($layout = Layouts::find($id)) {
             return view('settings::frontend.page_layouts.edit_page_layout_mobile', compact(['layout']));
@@ -357,7 +357,7 @@ class FrontPagesLayoutController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function postEditPageLayout ($id, Request $request)
+    public function postEditPageLayout($id, Request $request)
     {
         if ($layout = Layouts::find($id)) {
             $layout_arr = [];

@@ -2,4 +2,4 @@
 <!-- Nav tabs -->
 @section('tab')
     language
-    @stop
+@stop

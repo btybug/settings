@@ -10,12 +10,12 @@
     {!! $htmlBody !!}
 </div>
 <div class="layoutCoresetting hide animated bounceInRight" data-settinglive="settings">
- <div class="container-fluid"> 
-  {!! Form::model($settings,['url'=>'/admin/templates/settings/'.$id, 'id'=>'add_custome_page','files'=>true]) !!}
-  {!! $htmlSettings !!}
-  {!! Form::close() !!}
+    <div class="container-fluid">
+        {!! Form::model($settings,['url'=>'/admin/templates/settings/'.$id, 'id'=>'add_custome_page','files'=>true]) !!}
+        {!! $htmlSettings !!}
+        {!! Form::close() !!}
 
-  </div>
+    </div>
 </div>
 
 @include('resources::assests.magicModal')

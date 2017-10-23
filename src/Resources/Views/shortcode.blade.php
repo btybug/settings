@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-    @section('content')
-      
-     Shotcode
-      
+@section('content')
+
+    Shotcode
+
 @stop

@@ -35,16 +35,19 @@ class Emails extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function group(){
-        return $this->belongsTo('Sahakavatar\Settings\Models\EmailGroups','group_id');
+    public function group()
+    {
+        return $this->belongsTo('Sahakavatar\Settings\Models\EmailGroups', 'group_id');
     }
 
 
-    public function scopePublic($query) {
+    public function scopePublic($query)
+    {
         $query->where('is_public', '=', '1');
     }
 
-    public function form(){
-    return  $this->belongsTo('Sahakavatar\Create\Forms','form_id');
+    public function form()
+    {
+        return $this->belongsTo('Sahakavatar\Create\Forms', 'form_id');
     }
 }

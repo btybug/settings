@@ -8,15 +8,13 @@
  *  * Time: 10:44 PM
  *
  */
+
 namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Themes\Themes;
-use Sahakavatar\Assets\Models\LayoutUpload;
-use Sahakavatar\Settings\Models\Sidebar;
-use Sahakavatar\Settings\Models\SidebarTypes;
 use Datatables;
-use Illuminate\Http\Request;
+use Sahakavatar\Assets\Models\LayoutUpload;
 
 
 class LayoutController extends Controller
@@ -26,18 +24,19 @@ class LayoutController extends Controller
      */
     public $dhelp;
 
-    public function __construct ()
+    public function __construct()
     {
         $this->dhelp = new \Sahakavatar\Cms\Helpers\helpers;
     }
 
 
-    public function getIndex ()
+    public function getIndex()
     {
         $active = Themes::active();
-        return view('settings::frontend.page_layouts.index',compact(['active']));
+        return view('settings::frontend.page_layouts.index', compact(['active']));
     }
-    public function getDeleteLayout ($key)
+
+    public function getDeleteLayout($key)
     {
         $active = Themes::active()->remove($key);
         return redirect()->back();

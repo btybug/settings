@@ -9,11 +9,11 @@
 namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use File;
+use Illuminate\Http\Request;
 use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
 use Sahakavatar\Resources\Models\LayoutUpload;
 use Sahakavatar\Resources\Models\Validation as thValid;
-use File;
-use Illuminate\Http\Request;
 use view;
 
 
@@ -62,8 +62,8 @@ class PagesLayoutController extends Controller
         $layout = ContentLayouts::findByVariation($id);
         $html = $layout->renderLive($request->except('_token'));
         if ($save) {
-            $variation=ContentLayouts::findVariation($id);
-            $variation->settings=$request->except('_token');
+            $variation = ContentLayouts::findVariation($id);
+            $variation->settings = $request->except('_token');
             $variation->save();
         }
         return \Response::json(['error' => false, 'html' => $html]);

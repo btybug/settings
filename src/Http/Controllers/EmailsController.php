@@ -3,18 +3,20 @@
 namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
-class EmailsController extends Controller {
+class EmailsController extends Controller
+{
 
-    public function __construct() {
-        
+    public function __construct()
+    {
+
     }
 
-    public function getIndex() {
+    public function getIndex()
+    {
 
         return view('settings::emails');
     }
 
-   
+
 }

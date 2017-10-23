@@ -1,4 +1,3 @@
-
 <div class="panel panel-default">
     <div class="panel-heading bg-black-darker text-white">Facebook Login</div>
     <div class="panel-body">
@@ -6,7 +5,8 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        {!! Form::checkbox('facebook', 1,(config('config.facebook_login')) ? 'checked' : '',['id' => 'facebook']) !!} Enable Facebook Login
+                        {!! Form::checkbox('facebook', 1,(config('config.facebook_login')) ? 'checked' : '',['id' => 'facebook']) !!}
+                        Enable Facebook Login
                     </label>
                 </div>
             </div>
@@ -43,7 +43,8 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        {!! Form::checkbox('google', 1,(config('config.google_login')) ? 'checked' : '',['id' => 'google']) !!} Enable Google Plus Login
+                        {!! Form::checkbox('google', 1,(config('config.google_login')) ? 'checked' : '',['id' => 'google']) !!}
+                        Enable Google Plus Login
                     </label>
                 </div>
             </div>
@@ -80,7 +81,8 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        {!! Form::checkbox('twitter', 1,(config('config.twitter_login')) ? 'checked' : '',['id' => 'twitter']) !!} Enable Twitter Login
+                        {!! Form::checkbox('twitter', 1,(config('config.twitter_login')) ? 'checked' : '',['id' => 'twitter']) !!}
+                        Enable Twitter Login
                     </label>
                 </div>
             </div>
@@ -116,7 +118,8 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        {!! Form::checkbox('github', 1,(config('config.github_login')) ? 'checked' : '',['id' => 'github']) !!} Enable Github Login
+                        {!! Form::checkbox('github', 1,(config('config.github_login')) ? 'checked' : '',['id' => 'github']) !!}
+                        Enable Github Login
                     </label>
                 </div>
             </div>

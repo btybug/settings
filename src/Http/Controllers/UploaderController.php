@@ -1,16 +1,15 @@
 <?php
+
 namespace Sahakavatar\Settings\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
-use Sahakavatar\Media\Media;
-use Illuminate\Http\Request;
-use Sahakavatar\Settings\Uploaders;
 use App\Models\Term;
-use Sahakavatar\Create\Models\CHelper;
-use Sahakavatar\Cms\Helpers\helpers;
-use Sahakavatar\Cms\Helpers\helpers;
 use Datatables;
+use Illuminate\Http\Request;
+use Sahakavatar\Create\Models\CHelper;
+use Sahakavatar\Media\Media;
+use Sahakavatar\Settings\Uploaders;
 
 /**
  * @property CHelper chelper
@@ -33,7 +32,7 @@ class UploaderController extends Controller
         $this->chelper = new CHelper;
         $this->home = '/admin/settings/uploaders';
         $this->settings = [
-            'browseLabel'=> 'Browse',
+            'browseLabel' => 'Browse',
             'removeLabel' => 'Remove',
             'uploadLabel' => 'Upload'
         ];
@@ -61,10 +60,10 @@ class UploaderController extends Controller
      */
     public function getCreate()
     {
-       
+
         $folders = $this->chelper->termsFormatArr($this->term->mediaFolders());
         $settings = $this->settings;
-        return view('settings::uploaders.create',compact(['folders','settings']));
+        return view('settings::uploaders.create', compact(['folders', 'settings']));
     }
 
 
@@ -106,7 +105,7 @@ class UploaderController extends Controller
             $thumb = unserialize($uploader->thumb);
             $folders = $this->chelper->termsFormatArr($this->term->mediaFolders());
 
-            return view('settings::uploaders.update', compact(['uploader', 'settings', 'thumb','folders']));
+            return view('settings::uploaders.update', compact(['uploader', 'settings', 'thumb', 'folders']));
         } else {
             return redirect($this->home);
         }

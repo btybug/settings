@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 @section('content')
 
-   {!! 'this is Emails module settings page' !!}
+    {!! 'this is Emails module settings page' !!}
 
 @stop
- @section('CSS')
+@section('CSS')
 
 @stop
- @section('JS')
+@section('JS')
 
 @stop
 

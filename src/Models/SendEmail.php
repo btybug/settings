@@ -7,9 +7,9 @@
 
 namespace Sahakavatar\Settings\Models;
 
-use Sahakavatar\User\Models\Roles;
 use Carbon\Carbon;
 use Mail;
+use Sahakavatar\User\Models\Roles;
 
 /**
  * Class SendEmail
@@ -61,8 +61,6 @@ class SendEmail
         }
 
     }
-
-
 
 
     /**

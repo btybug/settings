@@ -12,18 +12,18 @@
 namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use File;
+use Illuminate\Http\Request;
 use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
 use Sahakavatar\Cms\Models\UiElements;
+use Sahakavatar\Create\Models\Menu;
+use Sahakavatar\Resources\Models\BackendTh;
 use Sahakavatar\Resources\Models\StyleItems;
 use Sahakavatar\Resources\Models\Styles;
-use Sahakavatar\Resources\Models\BackendTh;
 use Sahakavatar\Settings\Models\LayoutUpload;
 use Sahakavatar\Settings\Models\ThUpload;
 use Sahakavatar\Settings\Models\Validation as thValid;
-use Sahakavatar\Create\Models\Menu;
 use Sahakavatar\User\Models\Roles;
-use File;
-use Illuminate\Http\Request;
 use view;
 
 /**
@@ -257,15 +257,6 @@ class BackendThemeController extends Controller
         return ['html' => $html];
     }
 
-    protected function settingser($slug, $role)
-    {
-        $theme = BackendTh::find($slug);
-        $roles = Roles::where('slug', $role)->where('slug', '!=', 'user')->first();
-        if (!$theme or !$roles) return redirect()->back();
-        \Config::set('activeThem', $theme->slug);
-        return View::make("settings::backend_theme.settings", compact(['theme', 'slug', 'role']))->render();
-    }
-
     public function postSettingsLive(Request $request, $slug, $role)
     {
         $actions = [
@@ -369,24 +360,6 @@ class BackendThemeController extends Controller
 
     }
 
-
-    protected function editTheme($data, $them, $role)
-    {
-        $settinds = $them->settings['data'][$role];
-        $edit = array();
-        foreach ($data['data'] as $key) {
-            if (isset($settinds[$key['key']])) {
-                $item = StyleItems::find($settinds[$key['key']]);
-                if ($item) {
-                    $edit[$key['value']]['par'] = $item->classe->id;
-                    $edit[$key['value']]['ch'] = $settinds[$key['key']];
-                }
-
-            }
-        }
-        return \Response::json(['edit' => $edit]);
-    }
-
     public function postLiveSave(Request $request)
     {
         $data = $request->except(['slug', 'role', '_token']);
@@ -429,6 +402,32 @@ class BackendThemeController extends Controller
             }
         }
 
+        return \Response::json(['edit' => $edit]);
+    }
+
+    protected function settingser($slug, $role)
+    {
+        $theme = BackendTh::find($slug);
+        $roles = Roles::where('slug', $role)->where('slug', '!=', 'user')->first();
+        if (!$theme or !$roles) return redirect()->back();
+        \Config::set('activeThem', $theme->slug);
+        return View::make("settings::backend_theme.settings", compact(['theme', 'slug', 'role']))->render();
+    }
+
+    protected function editTheme($data, $them, $role)
+    {
+        $settinds = $them->settings['data'][$role];
+        $edit = array();
+        foreach ($data['data'] as $key) {
+            if (isset($settinds[$key['key']])) {
+                $item = StyleItems::find($settinds[$key['key']]);
+                if ($item) {
+                    $edit[$key['value']]['par'] = $item->classe->id;
+                    $edit[$key['value']]['ch'] = $settinds[$key['key']];
+                }
+
+            }
+        }
         return \Response::json(['edit' => $edit]);
     }
 }

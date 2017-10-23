@@ -80,7 +80,6 @@ Route::group(
         Route::post('/api-settings/update', 'ApiSettingsController@postUpdate');
 
 
-
         Route::get('/backgeneral', 'BackendThemeController@getIndex');
 
         Route::get('/theme-settings/{slug}/{role}', 'BackendThemeController@getSettings');
@@ -107,26 +106,26 @@ Route::group(
 
         Route::post('/upload-layout', 'PagesLayoutController@postUploadLayout');
 
-            //front pages layouts
-            Route::get('/frontend/general', 'SystemController@getMain');
-            Route::post('/frontend/general', 'SystemController@postMain');
-            // page layouts
-            Route::get('/frontend/layout', 'LayoutController@getIndex');
+        //front pages layouts
+        Route::get('/frontend/general', 'SystemController@getMain');
+        Route::post('/frontend/general', 'SystemController@postMain');
+        // page layouts
+        Route::get('/frontend/layout', 'LayoutController@getIndex');
 //            Route::get('/frontend/create-layout/{key?}', \App\Models\Themes\Themes::active()->namespace_to_create);
-            Route::get('/frontend/layout-delete/{key}', 'LayoutController@getDeleteLayout');
+        Route::get('/frontend/layout-delete/{key}', 'LayoutController@getDeleteLayout');
 
-            Route::get('/frontend', 'FrontPagesLayoutController@getPageLayout');
-            Route::get('/frontend/page-layout-builder', 'FrontPagesLayoutController@getPageLayoutBuilder');
-            Route::post('/frontend/deletebulk', 'FrontPagesLayoutController@postDeletebulk');
-            Route::post('/frontend/delete-layout', 'FrontPagesLayoutController@postDeleteLayout');
-            Route::post('/frontend/page-layout-builder', 'FrontPagesLayoutController@postPageLayoutBuilder');
-            Route::any('/frontend/data-layouts', 'FrontPagesLayoutController@getDataLayouts');
-            Route::get('/frontend/edit-page-layout/{id}', 'FrontPagesLayoutController@getEditPageLayout');
-            Route::post('/frontend/edit-page-layout/{id}', 'FrontPagesLayoutController@postEditPageLayout');
-            Route::get('/frontend/edit-layout-desktop/{id}', 'FrontPagesLayoutController@getEditPageLayoutDesktop');
-            Route::get('/frontend/edit-layout-landscape/{id}', 'FrontPagesLayoutController@getEditPageLayoutLandscape');
-            Route::get('/frontend/edit-layout-portrait/{id}', 'FrontPagesLayoutController@getEditPageLayoutPortrait');
-            Route::get('/frontend/edit-layout-mobile/{id}', 'FrontPagesLayoutController@getEditPageLayoutMobile');
+        Route::get('/frontend', 'FrontPagesLayoutController@getPageLayout');
+        Route::get('/frontend/page-layout-builder', 'FrontPagesLayoutController@getPageLayoutBuilder');
+        Route::post('/frontend/deletebulk', 'FrontPagesLayoutController@postDeletebulk');
+        Route::post('/frontend/delete-layout', 'FrontPagesLayoutController@postDeleteLayout');
+        Route::post('/frontend/page-layout-builder', 'FrontPagesLayoutController@postPageLayoutBuilder');
+        Route::any('/frontend/data-layouts', 'FrontPagesLayoutController@getDataLayouts');
+        Route::get('/frontend/edit-page-layout/{id}', 'FrontPagesLayoutController@getEditPageLayout');
+        Route::post('/frontend/edit-page-layout/{id}', 'FrontPagesLayoutController@postEditPageLayout');
+        Route::get('/frontend/edit-layout-desktop/{id}', 'FrontPagesLayoutController@getEditPageLayoutDesktop');
+        Route::get('/frontend/edit-layout-landscape/{id}', 'FrontPagesLayoutController@getEditPageLayoutLandscape');
+        Route::get('/frontend/edit-layout-portrait/{id}', 'FrontPagesLayoutController@getEditPageLayoutPortrait');
+        Route::get('/frontend/edit-layout-mobile/{id}', 'FrontPagesLayoutController@getEditPageLayoutMobile');
     }
 );
 
@@ -140,8 +139,8 @@ Route::group(['prefix' => 'admin/templates', 'middleware' => ['admin:Users']], f
 //        Route::post('/get-variations', 'TemplateController@postGetVariations');
 //        Route::post('/edit-variation', 'TemplateController@postEditVariation');
 //        Route::get('/delete-variation/{slug}', 'TemplateController@getDeleteVariation');
-        Route::get('/settings-live/{slug}', 'TemplateController@TemplatePerview');
-        Route::get('/settings-live-layout/{slug}', 'TemplateController@TemplateLayoutPerview');
+    Route::get('/settings-live/{slug}', 'TemplateController@TemplatePerview');
+    Route::get('/settings-live-layout/{slug}', 'TemplateController@TemplateLayoutPerview');
 //        Route::get('/settings-iframe-layout/{slug}', 'TemplateController@TemplateIframeLayout');
 //        Route::post('/front-layout-settings/{slug}', 'TemplateController@frontLayoutSettings');
 //        Route::get('/settings-iframe/{slug}/{page_id}/{edit?}', 'TemplateController@TemplatePerviewIframe');

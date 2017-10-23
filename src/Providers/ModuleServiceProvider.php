@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 class ModuleServiceProvider extends ServiceProvider
 {
     private $roleTheme = array();
+
     /**
      * Bootstrap the module services.
      *
@@ -14,8 +15,8 @@ class ModuleServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadTranslationsFrom(__DIR__.'/../Resources/Lang', 'settings');
-        $this->loadViewsFrom(__DIR__.'/../Resources/Views', 'settings');
+        $this->loadTranslationsFrom(__DIR__ . '/../Resources/Lang', 'settings');
+        $this->loadViewsFrom(__DIR__ . '/../Resources/Views', 'settings');
         $tubs = [
             'settings' => [
                 [
@@ -47,34 +48,34 @@ class ModuleServiceProvider extends ServiceProvider
                     'url' => '/admin/settings/lang',
                 ]
             ],
-            'backend_settings'=>[
+            'backend_settings' => [
                 [
                     'title' => 'Admin theme',
                     'url' => '/admin/settings/backgeneral',
                     'icon' => 'fa fa-cub'
-                ],[
+                ], [
                     'title' => 'Admin Layouts',
                     'url' => '/admin/settings/pages-layout',
                     'icon' => 'fa fa-cub'
-                ],[
+                ], [
                     'title' => 'Page Layout',
                     'url' => '/admin/settings/admin-templates',
                     'icon' => 'fa fa-cub'
-                ],[
+                ], [
                     'title' => 'Main body',
                     'url' => '/admin/settings/main-body',
                     'icon' => 'fa fa-cub'
-                ],[
+                ], [
                     'title' => 'Units',
                     'url' => '/admin/settings/units',
                     'icon' => 'fa fa-cub'
                 ],
-            ],'frontend'=>[
+            ], 'frontend' => [
                 [
                     'title' => 'Main',
                     'url' => '/admin/settings/frontend/general',
                     'icon' => 'fa fa-cub'
-                ],[
+                ], [
                     'title' => 'Page Layouts',
                     'url' => '/admin/settings/frontend/layout',
                     'icon' => 'fa fa-cub'

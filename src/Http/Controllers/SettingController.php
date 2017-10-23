@@ -3,27 +3,29 @@
 namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Sahakavatar\Settings\Fesetting;
 use App\Repositories\TemplatesRepository as Templates;
+use Illuminate\Http\Request;
 use Sahakavatar\Settings\AdminListingRepository as AdmnList;
-use Sahakavatar\Cms\Helpers\helpers;
-use Session,
-    URL;
+use Sahakavatar\Settings\Fesetting;
+use Session;
+use URL;
 
-class SettingController extends Controller {
+class SettingController extends Controller
+{
 
     private $templates = null;
     private $dbhelper = null;
     private $adminlisting = null;
 
-    public function __construct(Templates $templates, dbhelper $dbhelper, AdmnList $adminlisting) {
+    public function __construct(Templates $templates, dbhelper $dbhelper, AdmnList $adminlisting)
+    {
         $this->templates = $templates;
         $this->dbhelper = $dbhelper;
         $this->adminlisting = $adminlisting;
     }
 
-    public function getIndex() {
+    public function getIndex()
+    {
         $fesetting = Fesetting::find('1');
         $layouts = $this->getLayout();
         $position = $this->getPosition();
@@ -37,7 +39,59 @@ class SettingController extends Controller {
         return view('settings::setting', compact(['templates', 'fesetting', 'layouts', 'position', 'classes', 'orientations', 'grids', 'contents']));
     }
 
-    public function postSetting(Request $request) {
+    private function getLayout()
+    {
+        return ['full' => 'Full Width', 'rnav' => 'Right Nav'];
+    }
+
+    private function getPosition()
+    {
+        return ['top_left' => 'Top Left',
+            'top_right' => 'Top Right',
+            'bottom_left' => 'Bottom Left',
+            'bottom_right' => 'Bottom Right',
+            'middle' => 'Middle',
+        ];
+    }
+
+    private function getClasses()
+    {
+        return ['primary' => 'Primary',
+            'info' => 'Info',
+            'success' => 'Success Left',
+            'warning' => 'Warning',
+            'danger' => 'Danger',
+        ];
+    }
+
+    private function getGrids()
+    {
+        return ['1' => 'Grid 1',
+            '2' => 'Grid 2',
+            '3' => 'Grid 3',
+            '4' => 'Grid 4',
+            '5' => 'Grid 5',
+            '6' => 'Grid 6',
+        ];
+    }
+
+    private function getOrientation()
+    {
+        return ['ltr' => 'Left To Right',
+            'rtl' => 'Right To Left',
+        ];
+    }
+
+    private function getContents()
+    {
+        return ['template' => 'Template',
+            'widgets' => 'Widgets',
+            'custom' => 'Custom',
+        ];
+    }
+
+    public function postSetting(Request $request)
+    {
 
         $req = $request->all();
 
@@ -56,31 +110,33 @@ class SettingController extends Controller {
 
     /**
      * Tthis function provides the facility to set view column namaes facility for given table
-     * 
+     *
      * @param type $table_name
      * @param type $back_path
      */
-    public function getTablesettings($table_name, $bk = '') {
-        $bk = ($bk=='')?URL::previous():$bk;
+    public function getTablesettings($table_name, $bk = '')
+    {
+        $bk = ($bk == '') ? URL::previous() : $bk;
         $avail = [];
         $cols = $this->dbhelper->getTbCols($table_name);
         $rs = $this->adminlisting->findBy('code', $table_name);
-        if($rs){
+        if ($rs) {
             $values = $rs->values;
-            if($values!=''){
+            if ($values != '') {
                 $avail = unserialize($values);
             }
         }
-        return view('settings::tblsetting', compact(['cols', 'bk', 'table_name','avail']));
+        return view('settings::tblsetting', compact(['cols', 'bk', 'table_name', 'avail']));
     }
 
     /**
      * Save Columns those should be available for view
-     * 
+     *
      * @param Request $request
      * @return type
      */
-    public function postTablesettings(Request $request) {
+    public function postTablesettings(Request $request)
+    {
         $req = $request->all();
         $cols = $req['cols'];
         $code = $req['code'];
@@ -92,51 +148,6 @@ class SettingController extends Controller {
             $this->adminlisting->create($data);
         }
         return redirect($req['bk']);
-    }
-
-    private function getLayout() {
-        return ['full' => 'Full Width', 'rnav' => 'Right Nav'];
-    }
-
-    private function getPosition() {
-        return ['top_left' => 'Top Left',
-            'top_right' => 'Top Right',
-            'bottom_left' => 'Bottom Left',
-            'bottom_right' => 'Bottom Right',
-            'middle' => 'Middle',
-        ];
-    }
-
-    private function getGrids() {
-        return ['1' => 'Grid 1',
-            '2' => 'Grid 2',
-            '3' => 'Grid 3',
-            '4' => 'Grid 4',
-            '5' => 'Grid 5',
-            '6' => 'Grid 6',
-        ];
-    }
-
-    private function getContents() {
-        return ['template' => 'Template',
-            'widgets' => 'Widgets',
-            'custom' => 'Custom',
-        ];
-    }
-
-    private function getClasses() {
-        return ['primary' => 'Primary',
-            'info' => 'Info',
-            'success' => 'Success Left',
-            'warning' => 'Warning',
-            'danger' => 'Danger',
-        ];
-    }
-
-    private function getOrientation() {
-        return ['ltr' => 'Left To Right',
-            'rtl' => 'Right To Left',
-        ];
     }
 
 }

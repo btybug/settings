@@ -7,9 +7,10 @@
  */
 
 namespace Sahakavatar\Settings\Http\Controllers\Api;
-use Socialite;
-use Illuminate\Routing\Controller;
+
 use File;
+use Illuminate\Routing\Controller;
+use Socialite;
 
 class SotialAuthorisationController extends Controller
 {
@@ -18,10 +19,10 @@ class SotialAuthorisationController extends Controller
      *
      * @return Response
      */
-    public function redirectToProvider($sotial,$event=null)
+    public function redirectToProvider($sotial, $event = null)
     {
-        $redir=['main'=>$event];
-        File::put(base_path('app/Modules/Settings/social.json'),json_encode($redir,true));
+        $redir = ['main' => $event];
+        File::put(base_path('app/Modules/Settings/social.json'), json_encode($redir, true));
         return Socialite::driver($sotial)->redirect();
     }
 
@@ -32,24 +33,26 @@ class SotialAuthorisationController extends Controller
      */
     public function handleProviderCallback($sotial)
     {
-        $event=json_decode(File::get(base_path('app/Modules/Settings/social.json')),true);
-        File::put(base_path('app/Modules/Settings/social.json'),json_encode([],true));
+        $event = json_decode(File::get(base_path('app/Modules/Settings/social.json')), true);
+        File::put(base_path('app/Modules/Settings/social.json'), json_encode([], true));
         $user = Socialite::driver($sotial)->user();
 
-        return $this->HookSocial($sotial,$user,$event['main']);
+        return $this->HookSocial($sotial, $user, $event['main']);
     }
-    protected function HookSocial($sotial,$user,$event){
-        $functions=(\Config::get('sociale_actions'));
-        if($functions and  isset($functions[$sotial])){
-            foreach($functions[$sotial] as $function){
-                if($function['event']!=$event){
+
+    protected function HookSocial($sotial, $user, $event)
+    {
+        $functions = (\Config::get('sociale_actions'));
+        if ($functions and isset($functions[$sotial])) {
+            foreach ($functions[$sotial] as $function) {
+                if ($function['event'] != $event) {
                     try {
-                    $p_function=$function['function'];
+                        $p_function = $function['function'];
                         $p_function($user);
                     } catch (\Exception $e) {
                         // echo 'Caught exception: ',  $e->getMessage(), "\n";
                     }
-                }else{
+                } else {
                     $main = $function['function'];
                 }
             }
@@ -57,6 +60,6 @@ class SotialAuthorisationController extends Controller
             if (isset($main)) {
                 return $main($user);
             }
-    }
+        }
     }
 }

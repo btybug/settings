@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TemplateVariations extends Model
 {
-   /**
+    /**
      * The database table used by the model.
      *
      * @var string
@@ -40,7 +40,8 @@ class TemplateVariations extends Model
      */
 //    protected $dates = ['created_at', 'updated_at'];
 
-    public function template(){
+    public function template()
+    {
 //        return $this->belongsTo('');
     }
 

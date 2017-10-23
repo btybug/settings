@@ -9,10 +9,13 @@
                                 class="m-r-10"><i class="fa fa-pencil f-s-14"></i> </a></div>
                         @if($ui->default == 0)
                             <div>
-                                <a href="{!! url('/admin/resources/units/delete-variation',[$ui->id,$unit->id]) !!}" data-key="{!! $ui->id !!}" onclick="return confirm('Are you sure to delete')" class="addons-delete delete_layout"><i
+                                <a href="{!! url('/admin/resources/units/delete-variation',[$ui->id,$unit->id]) !!}"
+                                   data-key="{!! $ui->id !!}" onclick="return confirm('Are you sure to delete')"
+                                   class="addons-delete delete_layout"><i
                                             class="fa fa-trash-o f-s-14 "></i></a>
-                                <a href="{!! url('admin/resources/units/make-default-variation',[$ui->id,$unit->id]) !!}" class="addons-delete"><i
-                                                class="fa fa-legal f-s-14 "></i></a>
+                                <a href="{!! url('admin/resources/units/make-default-variation',[$ui->id,$unit->id]) !!}"
+                                   class="addons-delete"><i
+                                            class="fa fa-legal f-s-14 "></i></a>
                             </div>
                         @endif
                     </div>
@@ -23,7 +26,9 @@
                                                                   aria-hidden="true"></i> {!! $ui->title!!}</span>
                     <div class=" templates-buttons text-center ">
                         <span class="authorColumn"><i class="fa fa-user author-icon" aria-hidden="true"></i>
-                        {!! @$unit->author !!},</span> <span class="dateColumn"><i class="fa fa-calendar calendar-icon" aria-hidden="true"></i> {!! BBgetDateFormat($ui->created_at) !!}</span>
+                            {!! @$unit->author !!},</span> <span class="dateColumn"><i
+                                    class="fa fa-calendar calendar-icon"
+                                    aria-hidden="true"></i> {!! BBgetDateFormat($ui->created_at) !!}</span>
 
                     </div>
                 </div>

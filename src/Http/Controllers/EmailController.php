@@ -3,16 +3,17 @@
 namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Event;
+use App\Models\Setting;
 use App\Repositories\EmailGroupsRepository as EmailGroups;
 use App\Repositories\EmailsRepository as Emails;
 use App\Repositories\TemplatesRepository as Templates;
-use App\Models\Setting;
-use App\Models\Event;
+use Datatables;
+use Illuminate\Http\Request;
 use Sahakavatar\Cms\Helpers\helpers;
 use Sahakavatar\Cms\Helpers\helpers;
 use Sahakavatar\Settings\Models\Common;
-use Validator,Datatables;
+use Validator;
 
 
 /**
@@ -179,6 +180,22 @@ class EmailController extends Controller
         return redirect($this->index . $email->group->type . "/" . $email->group_id);
     }
 
+    public function getTemplate($tpl_id)
+    {
+        $tpl = $this->templates->find($tpl_id);
+        if ($tpl) {
+            $path = config('paths.templates_path') . '/' . $tpl->folder_name . "/tpl.blade.php";
+            $data = '';
+            if (\File::exists($path)) {
+                $data = \File::get($path);
+            }
+
+            return $data;
+        } else {
+            return '';
+        }
+    }
+
     /**
      * @param Request $request
      * @return mixed
@@ -200,7 +217,6 @@ class EmailController extends Controller
 
         return redirect()->back();
     }
-
 
     /**
      * @param Request $request
@@ -332,7 +348,6 @@ class EmailController extends Controller
         $this->email_groups->delete($id);
     }
 
-
     /**
      * @return mixed
      */
@@ -359,22 +374,6 @@ class EmailController extends Controller
         $obj = $obj->make(true);
 
         return $obj;
-    }
-
-    public function getTemplate($tpl_id)
-    {
-        $tpl = $this->templates->find($tpl_id);
-        if ($tpl) {
-            $path = config('paths.templates_path') . '/' . $tpl->folder_name . "/tpl.blade.php";
-            $data = '';
-            if (\File::exists($path)) {
-                $data = \File::get($path);
-            }
-
-            return $data;
-        } else {
-            return '';
-        }
     }
 
     /**

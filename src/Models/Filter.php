@@ -3,8 +3,8 @@
 namespace Sahakavatar\Models\Settings;
 
 use App\Models\Moduledb;
-use Illuminate\Database\Eloquent\Model;
 use File;
+use Illuminate\Database\Eloquent\Model;
 
 class Filter extends Model
 {
@@ -13,15 +13,14 @@ class Filter extends Model
      *
      * @var string
      */
- 
+
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['title','filter_data','module_id'];
-
+    protected $fillable = ['title', 'filter_data', 'module_id'];
 
 
     /**
@@ -47,14 +46,14 @@ class Filter extends Model
 
         $modules_path = config('paths.modules_path');
 
-        foreach($modules as $module) {
+        foreach ($modules as $module) {
             $path = $modules_path . $module->folder_name . "/Filters";
             if (File::exists($path)) {
                 $files = File::allFiles($path);
                 foreach ($files as $file) {
                     $base = basename((string)$file);
                     $name = str_replace('.json', '', $base);
-                    $data[] = ['title'=>$name,'Module'=>$module->folder_name];
+                    $data[] = ['title' => $name, 'Module' => $module->folder_name];
                 }
             }
         }

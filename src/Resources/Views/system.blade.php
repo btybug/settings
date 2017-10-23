@@ -3,26 +3,29 @@
     <div class="m-t-10" id="system">
         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 panels_wrapper panel_wrap">
             <div class="panel panel-default panels accordion_panels">
-                <div class="panel-heading bg-black-darker text-white"  role="tab" id="headingLink">
-                    <span  class="panel_title">System</span>
+                <div class="panel-heading bg-black-darker text-white" role="tab" id="headingLink">
+                    <span class="panel_title">System</span>
                     <a role="button" class="panelcollapsed collapsed" data-toggle="collapse"
-                       data-parent="#accordion" href="#collapseLink2" aria-expanded="true" aria-controls="collapseLink1">
+                       data-parent="#accordion" href="#collapseLink2" aria-expanded="true"
+                       aria-controls="collapseLink1">
                         <i class="fa fa-chevron-down" aria-hidden="true"></i>
                     </a>
                     <ul class="list-inline panel-actions">
-                        <li><a href="#" panel-fullscreen="true" role="button" title="Toggle fullscreen"><i class="glyphicon glyphicon-resize-full"></i></a></li>
+                        <li><a href="#" panel-fullscreen="true" role="button" title="Toggle fullscreen"><i
+                                        class="glyphicon glyphicon-resize-full"></i></a></li>
                     </ul>
                 </div>
-                <div id="collapseLink2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingLink">
-                <div class="panel-body panel_body panel_1 show">
-                    {!! Form::open(['route' => 'system.store','role' => 'form', 'class'=>'config-form ']) !!}
-                    @include('settings::forms._system_form')
-                    {!! Form::close() !!}
+                <div id="collapseLink2" class="panel-collapse collapse in" role="tabpanel"
+                     aria-labelledby="headingLink">
+                    <div class="panel-body panel_body panel_1 show">
+                        {!! Form::open(['route' => 'system.store','role' => 'form', 'class'=>'config-form ']) !!}
+                        @include('settings::forms._system_form')
+                        {!! Form::close() !!}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-        </div>
 @stop
 
 @section('CSS')

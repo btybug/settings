@@ -1,20 +1,18 @@
 <?php
+
 namespace Sahakavatar\Settings\Http\Controllers;
 
-use Auth;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Moduledb;
-use Sahakavatar\Settings\Models\Filter;
-use Sahakavatar\Settings\Models\Common;
-use Sahakavatar\Create\Fields;
+use Datatables;
+use File;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use Datatables, File;
-use Sahakavatar\User\Models\Sessions;
 use Redirect;
-use Illuminate\Support\Facades\Session;
-use Sahakavatar\User\User;
-
+use Sahakavatar\Create\Fields;
+use Sahakavatar\Settings\Models\Common;
+use Sahakavatar\Settings\Models\Filter;
+use Sahakavatar\User\Models\Sessions;
 
 
 /**
@@ -24,8 +22,8 @@ use Sahakavatar\User\User;
 class FilterController extends Controller
 {
     protected $dhelp;
-    private $helpers = null;
     protected $common;
+    private $helpers = null;
 
     /**
      * UploaderController constructor.
@@ -61,10 +59,11 @@ class FilterController extends Controller
      */
     public function getForceLogOut($user_id)
     {
-        $sesion=  Sessions::where('user_id',$user_id)->first();
+        $sesion = Sessions::where('user_id', $user_id)->first();
         $sesion->delete();
         return Redirect::back()->with('logoutMsg', 'User Logged Out Successfully!');
     }
+
     /**
      * Add new Filter
      *
@@ -119,7 +118,7 @@ class FilterController extends Controller
         $data = config('admin.filters');
         $info = $data[$id];
         //Temp CODE, MUST SHIFT IN SOME MODEL LATER
-        $path = config('paths.modules_path') .  $info['module']."/Filters/".$info["file_name"];
+        $path = config('paths.modules_path') . $info['module'] . "/Filters/" . $info["file_name"];
         if (File::exists($path)) {
             $json = File::get($path);
         }
@@ -127,7 +126,7 @@ class FilterController extends Controller
         $jsonObject = json_decode($json, true);
 
         //Temp CODE, MUST SHIFT IN SOME MODEL LATER
-        return view('settings::filter.update', compact(['modules', 'json','info', 'jsonObject', 'id']));
+        return view('settings::filter.update', compact(['modules', 'json', 'info', 'jsonObject', 'id']));
 
     }
 

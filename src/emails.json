@@ -1,14 +1,13 @@
 {
-	"name": "Emails",
-	"slug": "emails",
-	"namespace": "Settings",
-        "type": "addon",
-        "module": "Settings",
-	"version": "0.1",
-	"description": "efvwdfvwdfv",
-	"enabled": true,
-	"author":"Sahak",
-	"author_site": "sahak.com",
-
-    "have_setting":"on"
+  "name": "Emails",
+  "slug": "emails",
+  "namespace": "Settings",
+  "type": "addon",
+  "module": "Settings",
+  "version": "0.1",
+  "description": "efvwdfvwdfv",
+  "enabled": true,
+  "author": "Sahak",
+  "author_site": "sahak.com",
+  "have_setting": "on"
 }

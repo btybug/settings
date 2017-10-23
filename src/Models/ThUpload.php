@@ -1,8 +1,9 @@
 <?php namespace Sahakavatar\Settings\Models;
 
+use File;
 use Illuminate\Http\Request;
 use Sahakavatar\Cms\Helpers\helpers;
-use Zipper,File;
+use Zipper;
 
 /**
  * Class ThUpload
@@ -110,7 +111,7 @@ class ThUpload
     public function extract()
     {
         $fileName = $this->fileNmae;
-        $this->generatedName = $fileName.'_'.uniqid();
+        $this->generatedName = $fileName . '_' . uniqid();
         File::makeDirectory($this->uf . $this->generatedName);
         Zipper::make($this->uf . "/" . $fileName . self::ZIP)->extractTo($this->uf . $this->generatedName . '/');
     }
@@ -124,12 +125,12 @@ class ThUpload
     {
         if (File::exists($this->uf . $folder . '/' . 'config.json')) {
             $file = $this->uf . $folder . '/' . 'config.json';
-            $response =  $this->validate($file, $folder);
+            $response = $this->validate($file, $folder);
 
-            if($response['error'])
+            if ($response['error'])
                 return $response;
 
-            $this->dir = config('paths.backend_themes'). '/' . $response['data']['folder'];
+            $this->dir = config('paths.backend_themes') . '/' . $response['data']['folder'];
 
             File::copyDirectory($this->uf . $folder, $this->dir);
 
@@ -137,17 +138,17 @@ class ThUpload
         } else {
             if (File::exists($this->uf . $folder . '/' . $name . '/' . 'config.json')) {
                 $file = $this->uf . $folder . '/' . $name . '/' . 'config.json';
-                $response =  $this->validate($file, $folder);
+                $response = $this->validate($file, $folder);
 
-                if($response['error'])
+                if ($response['error'])
                     return $response;
 
                 $this->dir = config('paths.backend_themes') . '/' . $response['data']['folder'];
 
-                File::copyDirectory($this->uf . $folder. '/' . $name, $this->dir);
+                File::copyDirectory($this->uf . $folder . '/' . $name, $this->dir);
 
                 return $response;
-            }else{
+            } else {
                 return ['error' => 'true', 'message' => 'config.json file is not exists'];
             }
         }
@@ -179,19 +180,10 @@ class ThUpload
             //generate Settings
             $this->generateSettings($conf);
 
-            return ['data' => $conf,'code' => '200', 'error' => false];
+            return ['data' => $conf, 'code' => '200', 'error' => false];
         }
 
         return ['message' => 'Json file is empty !!!', 'code' => '404', 'error' => true];
-    }
-
-    /**
-     * @param $fileName
-     */
-    public function deleteFolderZip($fileName)
-    {
-        File::deleteDirectory($this->uf . $fileName);
-        File::delete($this->uf . $fileName . self::ZIP);
     }
 
     /**
@@ -203,11 +195,11 @@ class ThUpload
             $fileReq = File::get($this->uf . $conf['slug'] . '/' . $conf['folder'] . '/' . $conf['layout'] . '.html');
             $body = helpers::between('<body', '</body>', $fileReq);
 
-            $menus = str_replace('<!--menu::', 'mmenus', $body,$menu_count);
-            if($menu_count > 0){
-                for($i=0;$i <= $menu_count;$i++){
+            $menus = str_replace('<!--menu::', 'mmenus', $body, $menu_count);
+            if ($menu_count > 0) {
+                for ($i = 0; $i <= $menu_count; $i++) {
                     $menu_placholder = helpers::between('<!--menu::', '-->', $body);
-                    $body = str_replace('<!--menu::'.$menu_placholder.'-->', '{!! BBrenderThemeSettings("menu::'.$menu_placholder.'") !!}', $body);
+                    $body = str_replace('<!--menu::' . $menu_placholder . '-->', '{!! BBrenderThemeSettings("menu::' . $menu_placholder . '") !!}', $body);
                 }
             }
 
@@ -248,7 +240,8 @@ class ThUpload
     /**
      * @param $conf
      */
-    private function generateSettings($conf){
+    private function generateSettings($conf)
+    {
         if (File::exists($this->uf . $conf['slug'] . '/' . $conf['folder'] . '/' . $conf['settings']['file'] . '.html')) {
             $fileReq = File::get($this->uf . $conf['slug'] . '/' . $conf['folder'] . '/' . $conf['settings']['file'] . '.html');
             $body = helpers::between('<body>', '</body>', $fileReq);
@@ -278,9 +271,9 @@ class ThUpload
             File::copy($this->thsettingsstub, $bladePath);
 
             $blade = File::get($bladePath);
-            if($body){
+            if ($body) {
                 $blade = str_replace('{{BODY}}', $body, $blade);
-            }else{
+            } else {
                 $blade = str_replace('{{BODY}}', $fileReq, $blade);
             }
 
@@ -288,6 +281,15 @@ class ThUpload
             $blade = str_replace('{{JS}}', $js, $blade);
             File::put($bladePath, $blade);
         }
+    }
+
+    /**
+     * @param $fileName
+     */
+    public function deleteFolderZip($fileName)
+    {
+        File::deleteDirectory($this->uf . $fileName);
+        File::delete($this->uf . $fileName . self::ZIP);
     }
 
 }
