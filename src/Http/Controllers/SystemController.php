@@ -1,18 +1,18 @@
 <?php
 
-namespace Sahakavatar\Settings\Http\Controllers;
+namespace Btybug\Settings\Http\Controllers;
 
 use App\helpers\MainHelper as Helper;
 use App\Http\Controllers\Controller;
 use File;
 use Illuminate\Http\Request;
 use Sahakavatar\Cms\Helpers\helpers;
-use Sahakavatar\Settings\Repository\AdminsettingRepository as Settings;
+use Btybug\Settings\Repository\AdminsettingRepository as Settings;
 use Validator;
 
 /**
  * Class SystemController
- * @package Sahakavatar\Settings\Http\Controllers
+ * @package Btybug\Settings\Http\Controllers
  */
 class SystemController extends Controller
 {

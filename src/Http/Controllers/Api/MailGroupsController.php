@@ -1,10 +1,10 @@
 <?php
 
-namespace Sahakavatar\Settings\Http\Controllers\Api;
+namespace Btybug\Settings\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Sahakavatar\Settings\Models\EmailGroups as EmailGroups;
+use Btybug\Settings\Models\EmailGroups as EmailGroups;
 
 
 /**

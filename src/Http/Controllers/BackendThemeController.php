@@ -9,7 +9,7 @@
  *
  */
 
-namespace Sahakavatar\Settings\Http\Controllers;
+namespace Btybug\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use File;
@@ -17,18 +17,18 @@ use Illuminate\Http\Request;
 use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
 use Sahakavatar\Cms\Models\UiElements;
 use Sahakavatar\Create\Models\Menu;
-use Sahakavatar\Resources\Models\BackendTh;
-use Sahakavatar\Resources\Models\StyleItems;
-use Sahakavatar\Resources\Models\Styles;
-use Sahakavatar\Settings\Models\LayoutUpload;
-use Sahakavatar\Settings\Models\ThUpload;
-use Sahakavatar\Settings\Models\Validation as thValid;
-use Sahakavatar\User\Models\Roles;
+use Btybug\Resources\Models\BackendTh;
+use Btybug\Resources\Models\StyleItems;
+use Btybug\Resources\Models\Styles;
+use Btybug\Settings\Models\LayoutUpload;
+use Btybug\Settings\Models\ThUpload;
+use Btybug\Settings\Models\Validation as thValid;
+use Btybug\User\Models\Roles;
 use view;
 
 /**
  * Class ModulesController
- * @package Sahakavatar\Modules\Http\Controllers
+ * @package Btybug\Modules\Http\Controllers
  */
 class BackendThemeController extends Controller
 {

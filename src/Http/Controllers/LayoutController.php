@@ -9,7 +9,7 @@
  *
  */
 
-namespace Sahakavatar\Settings\Http\Controllers;
+namespace Btybug\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Themes\Themes;

@@ -6,7 +6,7 @@
  * Time: 12:29 PM
  */
 
-namespace Sahakavatar\Settings\Http\Controllers\Api;
+namespace Btybug\Settings\Http\Controllers\Api;
 
 use File;
 use Illuminate\Routing\Controller;

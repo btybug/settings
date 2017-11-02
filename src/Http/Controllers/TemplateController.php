@@ -9,7 +9,7 @@
  *
  */
 
-namespace Sahakavatar\Settings\Http\Controllers;
+namespace Btybug\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
@@ -25,9 +25,9 @@ use Sahakavatar\Cms\Models\Templates as Tpl;
 use Sahakavatar\Cms\Models\TplVariations;
 use Sahakavatar\Cms\Models\UiElements;
 use Sahakavatar\Create\Models\Corepage;
-use Sahakavatar\Settings\Models\Template;
-use Sahakavatar\Settings\Models\TemplateVariations;
-use Sahakavatar\Settings\Models\TplUpload;
+use Btybug\Settings\Models\Template;
+use Btybug\Settings\Models\TemplateVariations;
+use Btybug\Settings\Models\TplUpload;
 use Session;
 use Validator;
 use View;

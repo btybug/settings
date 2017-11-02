@@ -1,6 +1,6 @@
 <?php
 
-use Sahakavatar\Settings\Uploaders;
+use Btybug\Settings\Uploaders;
 
 if (!function_exists('BBUploader')) {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sahakavatar\Settings\Models;
+namespace Btybug\Settings\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -55,7 +55,7 @@ class Notification extends Model
      */
     public function body()
     {
-        return $this->belongsTo('Sahakavatar\Settings\Models\NotificationCategory', 'category_id');
+        return $this->belongsTo('Btybug\Settings\Models\NotificationCategory', 'category_id');
     }
 
     /**

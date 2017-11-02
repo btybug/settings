@@ -1,6 +1,6 @@
 <?php
 
-namespace Sahakavatar\Settings\Models;
+namespace Btybug\Settings\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -37,7 +37,7 @@ class Emails extends Model
      */
     public function group()
     {
-        return $this->belongsTo('Sahakavatar\Settings\Models\EmailGroups', 'group_id');
+        return $this->belongsTo('Btybug\Settings\Models\EmailGroups', 'group_id');
     }
 
 

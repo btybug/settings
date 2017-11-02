@@ -6,14 +6,14 @@
  * Time: 9:35 PM
  */
 
-namespace Sahakavatar\Settings\Http\Controllers;
+namespace Btybug\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use File;
 use Illuminate\Http\Request;
 use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts;
-use Sahakavatar\Resources\Models\LayoutUpload;
-use Sahakavatar\Resources\Models\Validation as thValid;
+use Btybug\Resources\Models\LayoutUpload;
+use Btybug\Resources\Models\Validation as thValid;
 use view;
 
 

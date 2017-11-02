@@ -1,4 +1,4 @@
-@extends('cms::layouts.mTabs',['index'=>'settings'])
+@extends('btybug::layouts.mTabs',['index'=>'settings'])
 @section('tab')
     <div class="m-t-10" id="system">
         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 panels_wrapper panel_wrap">
