@@ -1,13 +1,13 @@
 <?php
 
-namespace Btybug\Settings\Http\Controllers;
+namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\MenuRepository as Menus;
 use File;
 use Illuminate\Http\Request;
 use Sahakavatar\Cms\Helpers\helpers;
-use Btybug\User\Models\Roles;
+use Sahakavatar\User\Models\Roles;
 
 class BkmenuController extends Controller
 {

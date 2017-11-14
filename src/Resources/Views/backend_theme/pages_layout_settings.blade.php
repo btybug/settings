@@ -1,4 +1,4 @@
-@extends('btybug::layouts.uiPreview')
+@extends('cms::layouts.uiPreview')
 
 @section('content')
     <div class="center-block" id="widget_container">
@@ -38,23 +38,23 @@
 @stop
 @section('CSS')
     {!! HTML::style("https://jqueryvalidation.org/files/demo/site-demos.css") !!}
-    {!! HTML::style('css/preview-template.css') !!}
-    {!! HTML::style('js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') !!}
+    {!! HTML::style('public/css/preview-template.css') !!}
+    {!! HTML::style('public/js/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') !!}
     @yield('CSS')
     @stack('css')
 @stop
 @section('JS')
 
-    {!! HTML::script("js/bootstrap.min.js") !!}
-    {!! HTML::script("js/UiElements/bb_styles.js?v.5") !!}
-    {!! HTML::script("js/UiElements/bb_div.js") !!}
-    {!! HTML::script("js/UiElements/ui-preview-setting.js") !!}
-    {!! HTML::script("js/UiElements/ui-settings.js") !!}
-    {!! HTML::script("js/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js") !!}
+    {!! HTML::script("public/js/bootstrap.min.js") !!}
+    {!! HTML::script("public/js/UiElements/bb_styles.js?v.5") !!}
+    {!! HTML::script("public/js/UiElements/bb_div.js") !!}
+    {!! HTML::script("public/js/UiElements/ui-preview-setting.js") !!}
+    {!! HTML::script("public/js/UiElements/ui-settings.js") !!}
+    {!! HTML::script("public/js/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js") !!}
     {!! HTML::script("https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js") !!}
     {!! HTML::script("https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js") !!}
-    {!! HTML::script("js/tinymice/tinymce.min.js") !!}
-    {!! HTML::script('js/UiElements/content-layout-settings.js') !!}
+    {!! HTML::script("public/js/tinymice/tinymce.min.js") !!}
+    {!! HTML::script('public/js/UiElements/content-layout-settings.js') !!}
     @yield('JS')
     @stack('javascript')
 @stop

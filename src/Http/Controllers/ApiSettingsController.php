@@ -6,11 +6,11 @@
  * Time: 11:00 PM
  */
 
-namespace Btybug\Settings\Http\Controllers;
+namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Btybug\Settings\Repository\Settings;
+use Sahakavatar\Settings\Repository\Settings;
 use Socialite;
 
 class ApiSettingsController extends Controller

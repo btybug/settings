@@ -1,6 +1,6 @@
 <?php
 
-namespace Btybug\Settings\Models;
+namespace Sahakavatar\Settings\Models;
 
 use App\Models\Menu;
 use File;
@@ -111,6 +111,6 @@ class Sidebar extends Model
 
     public function type()
     {
-        return $this->belongsTo('Btybug\Settings\Models\SidebarTypes', 'sidebar_type_id');
+        return $this->belongsTo('Sahakavatar\Settings\Models\SidebarTypes', 'sidebar_type_id');
     }
 }

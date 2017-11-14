@@ -1,6 +1,6 @@
 <?php
 
-namespace Btybug\Settings\Repository;
+namespace Sahakavatar\Settings\Repository;
 
 
 use Sahakavatar\Cms\Repositories\GeneralRepository;
@@ -234,11 +234,10 @@ class AdminsettingRepository extends GeneralRepository
     {
         $result = $this->findBy('settingkey', $settingkey);
         if ($result) {
-            $this->update($result->id, ['val' => json_encode($data, true)]);
-        } else {
-            $this->create(['section' => $section, 'settingkey' => $settingkey,
-                'val' => json_encode($data, true)]);
+            return $this->update($result->id, ['val' => json_encode($data, true)]);
         }
+            return $this->create(['section' => $section, 'settingkey' => $settingkey,
+                'val' => json_encode($data, true)]);
     }
 
     public function createOrUpdate($data, $section, $settingkey)
@@ -264,6 +263,6 @@ class AdminsettingRepository extends GeneralRepository
 
     protected function model()
     {
-        return new \Btybug\Settings\Models\Settings();
+        return new \Sahakavatar\Settings\Models\Settings();
     }
 }

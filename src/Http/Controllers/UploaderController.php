@@ -1,6 +1,6 @@
 <?php
 
-namespace Btybug\Settings\Http\Controllers;
+namespace Sahakavatar\Settings\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
@@ -9,7 +9,7 @@ use Datatables;
 use Illuminate\Http\Request;
 use Sahakavatar\Create\Models\CHelper;
 use Sahakavatar\Media\Media;
-use Btybug\Settings\Uploaders;
+use Sahakavatar\Settings\Uploaders;
 
 /**
  * @property CHelper chelper

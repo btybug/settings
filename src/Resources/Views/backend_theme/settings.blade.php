@@ -1,4 +1,4 @@
-@extends('btybug::layouts.mTabs',['index'=>'role_themes'])
+@extends('cms::layouts.mTabs',['index'=>'role_themes'])
 @section('tab')
     {!! Form::model($theme,['class' => 'form-horizontal','url' => '/admin/settings/theme-settings/'.$theme->slug ]) !!}
     @include('layouts/themes/'.$theme->folder.'/'.$theme->settings['file'])

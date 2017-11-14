@@ -1,4 +1,4 @@
-@extends('btybug::layouts.mTabs',['index'=>'backend_theme'])
+@extends('cms::layouts.mTabs',['index'=>'backend_theme'])
 @section('tab')
 
     <div class="row">

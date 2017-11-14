@@ -1,6 +1,6 @@
 <?php
 
-namespace Btybug\Settings\Models;
+namespace Sahakavatar\Settings\Models;
 
 use File;
 use Validator;

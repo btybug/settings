@@ -1,4 +1,4 @@
-@extends('btybug::layouts.mTabs',['index'=>'settings'])
+@extends('cms::layouts.mTabs',['index'=>'settings'])
 @section('tab')
 
     <div class="tab-pane fade in active m-t-10" id="login">
@@ -41,15 +41,15 @@
 @stop
 
 @section('CSS')
-    {!! HTML::style('css/admin_pages.css') !!}
-    {!! HTML::style('css/menu.css?v=0.16') !!}
-    {!! HTML::style('css/tool-css.css?v=0.23') !!}
-    {!! HTML::style('css/page.css?v=0.15') !!}
+    {!! HTML::style('public/css/admin_pages.css') !!}
+    {!! HTML::style('public/css/menu.css?v=0.16') !!}
+    {!! HTML::style('public/css/tool-css.css?v=0.23') !!}
+    {!! HTML::style('public/css/page.css?v=0.15') !!}
 @stop
 @section('JS')
-    {!! HTML::script('js/admin_pages.js') !!}
+    {!! HTML::script('public/js/admin_pages.js') !!}
     {!! HTML::script("/resources/assets/js/UiElements/bb_styles.js?v.5") !!}
-    {!! HTML::script('js/nestedSortable/jquery.mjs.nestedSortable.js') !!}
-    {!! HTML::script('js/bootbox/js/bootbox.min.js') !!}
-    {!! HTML::script('js/icon-plugin.js?v=0.4') !!}
+    {!! HTML::script('public/js/nestedSortable/jquery.mjs.nestedSortable.js') !!}
+    {!! HTML::script('public/js/bootbox/js/bootbox.min.js') !!}
+    {!! HTML::script('public/js/icon-plugin.js?v=0.4') !!}
 @stop

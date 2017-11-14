@@ -16,7 +16,7 @@
  * Time: 10:51 PM
  */
 
-namespace Btybug\Settings\Models;
+namespace Sahakavatar\Settings\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -31,7 +31,7 @@ class SidebarTypes extends Model
 
     public function sidebars()
     {
-        return $this->hasMany('Btybug\Settings\Models\Sidebar', 'sidebar_type_id');
+        return $this->hasMany('Sahakavatar\Settings\Models\Sidebar', 'sidebar_type_id');
     }
 
     public function scopeExtra($model)

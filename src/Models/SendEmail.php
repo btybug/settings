@@ -5,16 +5,16 @@
  * Time: 1:28 PM
  */
 
-namespace Btybug\Settings\Models;
+namespace Sahakavatar\Settings\Models;
 
 use Carbon\Carbon;
 use Mail;
-use Btybug\User\Models\Roles;
+use Sahakavatar\User\Models\Roles;
 
 /**
  * Class SendEmail
  *
- * @package Btybug\Settings\Models
+ * @package Sahakavatar\Settings\Models
  */
 class SendEmail
 {

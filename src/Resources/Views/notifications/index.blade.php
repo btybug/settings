@@ -1,4 +1,4 @@
-@extends('btybug::layouts.mTabs',['index'=>'settings'])
+@extends('cms::layouts.mTabs',['index'=>'settings'])
 
 @section('parag')
     {!! Breadcrumbs::render('settings_nitify') !!}

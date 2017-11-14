@@ -1,6 +1,6 @@
 <?php
 
-namespace Btybug\Settings\Models;
+namespace Sahakavatar\Settings\Models;
 
 use App\Models\Moduledb;
 use File;
@@ -9,7 +9,7 @@ use Sahakavatar\Create\Fields;
 /**
  * Class Common
  *
- * @package Btybug\Settings\Models
+ * @package Sahakavatar\Settings\Models
  */
 class Common
 {

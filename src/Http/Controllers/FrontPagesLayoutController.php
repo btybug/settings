@@ -16,18 +16,18 @@
  * Time: 9:35 PM
  */
 
-namespace Btybug\Settings\Http\Controllers;
+namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Datatables;
 use Illuminate\Http\Request;
-use Btybug\Settings\Models\Sidebar;
-use Btybug\Settings\Models\SidebarTypes;
+use Sahakavatar\Settings\Models\Sidebar;
+use Sahakavatar\Settings\Models\SidebarTypes;
 
 
 /**
  * Class FrontPagesLayoutController
- * @package Btybug\Settings\Http\Controllers
+ * @package Sahakavatar\Settings\Http\Controllers
  */
 class FrontPagesLayoutController extends Controller
 {

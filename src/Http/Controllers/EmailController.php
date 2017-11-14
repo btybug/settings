@@ -1,6 +1,6 @@
 <?php
 
-namespace Btybug\Settings\Http\Controllers;
+namespace Sahakavatar\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
@@ -12,7 +12,7 @@ use Datatables;
 use Illuminate\Http\Request;
 use Sahakavatar\Cms\Helpers\helpers;
 use Sahakavatar\Cms\Helpers\helpers;
-use Btybug\Settings\Models\Common;
+use Sahakavatar\Settings\Models\Common;
 use Validator;
 
 

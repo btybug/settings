@@ -1,4 +1,4 @@
-@extends('btybug::layouts.mTabs',['index'=>'settings'])
+@extends('cms::layouts.mTabs',['index'=>'settings'])
 @section('tab')
     {!! Form::model(null,['method'=>'POST','url'=>'/admin/settings/api-settings/update', 'id'=>'edit_sidebar']) !!}
     <div class="row">
