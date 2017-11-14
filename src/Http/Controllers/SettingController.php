@@ -1,12 +1,12 @@
 <?php
 
-namespace Sahakavatar\Settings\Http\Controllers;
+namespace Btybug\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\TemplatesRepository as Templates;
 use Illuminate\Http\Request;
-use Sahakavatar\Settings\AdminListingRepository as AdmnList;
-use Sahakavatar\Settings\Fesetting;
+use Btybug\Settings\AdminListingRepository as AdmnList;
+use Btybug\Settings\Fesetting;
 use Session;
 use URL;
 

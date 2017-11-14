@@ -1,6 +1,6 @@
 <?php
 
-namespace Sahakavatar\Settings\Models;
+namespace Btybug\Settings\Models;
 
 use File;
 use Validator;
@@ -8,7 +8,7 @@ use Validator;
 
 /**
  * Class Validation
- * @package Sahakavatar\Packeges\Models
+ * @package Btybug\Packeges\Models
  */
 class Validation
 {

@@ -9,7 +9,7 @@
  *
  */
 
-namespace Sahakavatar\Settings\Http\Controllers;
+namespace Btybug\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
@@ -19,26 +19,26 @@ use Datatables;
 use File;
 use Illuminate\Http\Request;
 use Input;
-use Sahakavatar\Cms\Helpers\helpers;
-use Sahakavatar\Cms\Helpers\helpers;
-use Sahakavatar\Cms\Models\Templates as Tpl;
-use Sahakavatar\Cms\Models\TplVariations;
-use Sahakavatar\Cms\Models\UiElements;
-use Sahakavatar\Create\Models\Corepage;
-use Sahakavatar\Settings\Models\Template;
-use Sahakavatar\Settings\Models\TemplateVariations;
-use Sahakavatar\Settings\Models\TplUpload;
+use Btybug\Cms\Helpers\helpers;
+use Btybug\Cms\Helpers\helpers;
+use Btybug\Cms\Models\Templates as Tpl;
+use Btybug\Cms\Models\TplVariations;
+use Btybug\Cms\Models\UiElements;
+use Btybug\Create\Models\Corepage;
+use Btybug\Settings\Models\Template;
+use Btybug\Settings\Models\TemplateVariations;
+use Btybug\Settings\Models\TplUpload;
 use Session;
 use Validator;
 use View;
 use Zipper;
 
-//use Sahakavatar\Assets\Models\Validation as validateUpl;
+//use Btybug\Assets\Models\Validation as validateUpl;
 
 /**
  * Class TemplateController
  *
- * @package Sahakavatar\Packeges\Http\Controllers
+ * @package Btybug\Packeges\Http\Controllers
  */
 class TemplateController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sahakavatar\Settings\Http\Controllers;
+namespace Btybug\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
@@ -10,9 +10,9 @@ use App\Repositories\EmailsRepository as Emails;
 use App\Repositories\TemplatesRepository as Templates;
 use Datatables;
 use Illuminate\Http\Request;
-use Sahakavatar\Cms\Helpers\helpers;
-use Sahakavatar\Cms\Helpers\helpers;
-use Sahakavatar\Settings\Models\Common;
+use Btybug\Cms\Helpers\helpers;
+use Btybug\Cms\Helpers\helpers;
+use Btybug\Settings\Models\Common;
 use Validator;
 
 

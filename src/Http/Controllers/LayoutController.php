@@ -9,12 +9,12 @@
  *
  */
 
-namespace Sahakavatar\Settings\Http\Controllers;
+namespace Btybug\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Themes\Themes;
 use Datatables;
-use Sahakavatar\Assets\Models\LayoutUpload;
+use Btybug\Assets\Models\LayoutUpload;
 
 
 class LayoutController extends Controller
@@ -26,7 +26,7 @@ class LayoutController extends Controller
 
     public function __construct()
     {
-        $this->dhelp = new \Sahakavatar\Cms\Helpers\helpers;
+        $this->dhelp = new \Btybug\Cms\Helpers\helpers;
     }
 
 

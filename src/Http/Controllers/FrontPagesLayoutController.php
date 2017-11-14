@@ -16,18 +16,18 @@
  * Time: 9:35 PM
  */
 
-namespace Sahakavatar\Settings\Http\Controllers;
+namespace Btybug\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Datatables;
 use Illuminate\Http\Request;
-use Sahakavatar\Settings\Models\Sidebar;
-use Sahakavatar\Settings\Models\SidebarTypes;
+use Btybug\Settings\Models\Sidebar;
+use Btybug\Settings\Models\SidebarTypes;
 
 
 /**
  * Class FrontPagesLayoutController
- * @package Sahakavatar\Settings\Http\Controllers
+ * @package Btybug\Settings\Http\Controllers
  */
 class FrontPagesLayoutController extends Controller
 {
@@ -50,7 +50,7 @@ class FrontPagesLayoutController extends Controller
         $this->lyUpload = $lyUpload;
 
         $this->up = config('paths.backend_themes_upl');
-        $this->dhelp = new \Sahakavatar\Cms\Helpers\helpers;
+        $this->dhelp = new \Btybug\Cms\Helpers\helpers;
         $this->sidebar = $sidebar;
     }
 

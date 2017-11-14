@@ -9,18 +9,18 @@
  *
  */
 
-namespace Sahakavatar\Settings\Models;
+namespace Btybug\Settings\Models;
 
 use App\Models\MenuData;
 use File;
 use Illuminate\Http\Request;
-use Sahakavatar\Cms\Helpers\helpers;
-use Sahakavatar\Cms\Models\Templates as Tpl;
+use Btybug\Cms\Helpers\helpers;
+use Btybug\Cms\Models\Templates as Tpl;
 use Zipper;
 
 /**
  * Class TplUpload
- * @package Sahakavatar\Packeges\Models
+ * @package Btybug\Packeges\Models
  */
 class TplUpload
 {

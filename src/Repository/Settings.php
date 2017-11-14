@@ -6,10 +6,10 @@
  * Time: 11:51 AM
  */
 
-namespace Sahakavatar\Settings\Repository;
+namespace Btybug\Settings\Repository;
 
 use App\Models\Setting;
-use Sahakavatar\Cms\Helpers\helpers;
+use Btybug\Cms\Helpers\helpers;
 
 
 /**

@@ -1,11 +1,11 @@
 <?php
 
-namespace Sahakavatar\Settings\Models;
+namespace Btybug\Settings\Models;
 
 use App\Models\Menu;
 use File;
 use Illuminate\Database\Eloquent\Model;
-use Sahakavatar\Assets\Models\ClassesVariations;
+use Btybug\Assets\Models\ClassesVariations;
 
 class Sidebar extends Model
 {
@@ -111,6 +111,6 @@ class Sidebar extends Model
 
     public function type()
     {
-        return $this->belongsTo('Sahakavatar\Settings\Models\SidebarTypes', 'sidebar_type_id');
+        return $this->belongsTo('Btybug\Settings\Models\SidebarTypes', 'sidebar_type_id');
     }
 }

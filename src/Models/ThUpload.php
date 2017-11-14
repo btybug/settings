@@ -1,13 +1,13 @@
-<?php namespace Sahakavatar\Settings\Models;
+<?php namespace Btybug\Settings\Models;
 
 use File;
 use Illuminate\Http\Request;
-use Sahakavatar\Cms\Helpers\helpers;
+use Btybug\Cms\Helpers\helpers;
 use Zipper;
 
 /**
  * Class ThUpload
- * @package Sahakavatar\Developers\Model
+ * @package Btybug\Developers\Model
  */
 class ThUpload
 {

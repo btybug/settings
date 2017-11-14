@@ -1,15 +1,15 @@
 <?php
 
-namespace Sahakavatar\Settings\Http\Controllers;
+namespace Btybug\Settings\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
 use App\Models\Term;
 use Datatables;
 use Illuminate\Http\Request;
-use Sahakavatar\Create\Models\CHelper;
-use Sahakavatar\Media\Media;
-use Sahakavatar\Settings\Uploaders;
+use Btybug\Create\Models\CHelper;
+use Btybug\Media\Media;
+use Btybug\Settings\Uploaders;
 
 /**
  * @property CHelper chelper

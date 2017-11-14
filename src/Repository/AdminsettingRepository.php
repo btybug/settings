@@ -1,9 +1,9 @@
 <?php
 
-namespace Sahakavatar\Settings\Repository;
+namespace Btybug\Settings\Repository;
 
 
-use Sahakavatar\Cms\Repositories\GeneralRepository;
+use Btybug\Cms\Repositories\GeneralRepository;
 
 class AdminsettingRepository extends GeneralRepository
 {
@@ -263,6 +263,6 @@ class AdminsettingRepository extends GeneralRepository
 
     protected function model()
     {
-        return new \Sahakavatar\Settings\Models\Settings();
+        return new \Btybug\Settings\Models\Settings();
     }
 }

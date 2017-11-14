@@ -1,6 +1,6 @@
 <?php
 
-namespace Sahakavatar\Settings\Models;
+namespace Btybug\Settings\Models;
 
 use App\helpers\setres;
 use Illuminate\Database\Eloquent\Model;
@@ -44,7 +44,7 @@ class EmailGroups extends Model
 
     public function emails()
     {
-        return $this->hasMany('Sahakavatar\Settings\Models\Emails', 'group_id', 'id');
+        return $this->hasMany('Btybug\Settings\Models\Emails', 'group_id', 'id');
     }
 
 

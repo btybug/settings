@@ -1,6 +1,6 @@
 <?php
 
-namespace Sahakavatar\Settings\Http\Controllers;
+namespace Btybug\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Moduledb;
@@ -9,10 +9,10 @@ use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Redirect;
-use Sahakavatar\Create\Fields;
-use Sahakavatar\Settings\Models\Common;
-use Sahakavatar\Settings\Models\Filter;
-use Sahakavatar\User\Models\Sessions;
+use Btybug\Create\Fields;
+use Btybug\Settings\Models\Common;
+use Btybug\Settings\Models\Filter;
+use Btybug\User\Models\Sessions;
 
 
 /**

@@ -6,17 +6,17 @@
  * Time: 9:35 PM
  */
 
-namespace Sahakavatar\Settings\Http\Controllers;
+namespace Btybug\Settings\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use File;
 use Illuminate\Http\Request;
-use Sahakavatar\Cms\Models\ContentLayouts\ContentLayouts as AdminTemplates;
-use Sahakavatar\Cms\Models\Templates\Units;
-use Sahakavatar\Cms\Models\Widgets;
-use Sahakavatar\Modules\Models\AdminPages;
-use Sahakavatar\Resources\Models\LayoutUpload;
-use Sahakavatar\Resources\Models\Validation as thValid;
+use Btybug\Cms\Models\ContentLayouts\ContentLayouts as AdminTemplates;
+use Btybug\Cms\Models\Templates\Units;
+use Btybug\Cms\Models\Widgets;
+use Btybug\Modules\Models\AdminPages;
+use Btybug\Resources\Models\LayoutUpload;
+use Btybug\Resources\Models\Validation as thValid;
 use view;
 
 

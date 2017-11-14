@@ -52,7 +52,7 @@
                                                target="_blank" class="addons-deactivate  m-r-10"><i
                                                         class="fa fa-cog f-s-14"></i> </a>
 
-                                            @if($th->slug == \Sahakavatar\Resources\Models\BackendTh::active()->slug)
+                                            @if($th->slug == \Btybug\Resources\Models\BackendTh::active()->slug)
                                                 <span class="label label-success m-r-10 active-111"><i
                                                             class="fa fa-check"></i></span>
                                                 {{--Active</span>--}}
