@@ -1,6 +1,6 @@
 <?php
 
-namespace Sahakavatar\Models\Settings;
+namespace Btybug\Models\Settings;
 
 use App\Models\Moduledb;
 use File;
